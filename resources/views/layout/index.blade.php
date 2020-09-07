@@ -22,7 +22,7 @@
             <div class="header_fixed">
                 <div class="container">
                     <div class="header_top">
-                        <a class="logo" href="index.html"></a>
+                        <a class="logo" href="index"></a>
                         <form class="search_block" action="">
                             <input class="search_input" type="text" placeholder="Поиск по сайту...">
                             <button class="search_btn" type="submit"></button>
@@ -67,14 +67,14 @@
                     </div>
                     <div class="header_bottom">
                         <ul class="menu">
-                            <li><a class="menu_link active" href="index.html">Главная</a></li>
+                            <li><a class="menu_link active" href="/">Главная</a></li>
                             <li class="sub_menu_link">
                                 <a class="menu_link" href="javascript:;">О нас</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="about.html">История центра</a>
-                                        <a class="sub_link" href="ystav.html">Устав</a>
-                                        <a class="sub_link" href="structure.html">Структура</a>
+                                        <a class="sub_link" href="about">История центра</a>
+                                        <a class="sub_link" href="ustav">Устав</a>
+                                        <a class="sub_link" href="structure">Структура</a>
                                     </div>
                                 </div>
                             </li>
@@ -82,15 +82,15 @@
                                 <a class="menu_link" href="javascript:;">Деятельность</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="expertise_type.html">Виды проводимых экспертиз</a>
-                                        <a class="sub_link" href="work_plan.html">План работы</a>
-                                        <a class="sub_link" href="npa_base.html">База НПА</a>
-                                        <a class="sub_link" href="npa_project.html">Проекты НПА</a>
-                                        <a class="sub_link" href="science_activity.html">Научная деятельность</a>
-                                        <a class="sub_link" href="cert_standart.html">Стандартизация и сертификация</a>
-                                        <a class="sub_link" href="statistic.html">Аналитика и статистика</a>
-                                        <a class="sub_link" href="gos_zakup.html">Государственные закупки</a>
-                                        <a class="sub_link" href="vakancy.html">Вакансии</a>
+                                        <a class="sub_link" href="expertise_type">Виды проводимых экспертиз</a>
+                                        <a class="sub_link" href="work_plan">План работы</a>
+                                        <a class="sub_link" href="npa_base">База НПА</a>
+                                        <a class="sub_link" href="npa_project">Проекты НПА</a>
+                                        <a class="sub_link" href="science_activity">Научная деятельность</a>
+                                        <a class="sub_link" href="cert_standart">Аккредитация Институтов</a>
+                                        <a class="sub_link" href="statistic">Аналитика и статистика</a>
+                                        <a class="sub_link" href="gos_zakup">Государственные закупки</a>
+                                        <a class="sub_link" href="vakancy">Вакансии</a>
                                     </div>
                                 </div>
                             </li>
@@ -98,16 +98,16 @@
                                 <a class="menu_link" href="javascript:;">Гражданам</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="priem_grazhdan.html">График приема граждан</a>
-                                        <a class="sub_link" href="paid_services.html">Платные услуги</a>
-                                        <a class="sub_link" href="gos_services.html">Государственные услуги</a>
+                                        <a class="sub_link" href="priem_grazhdan">График приема граждан</a>
+                                        <a class="sub_link" href="paid_services">Платные услуги</a>
+                                        <a class="sub_link" href="gos_services">Государственные услуги</a>
                                     </div>
                                 </div>
                             </li>
-                            <li><a class="menu_link" href="world_bank.html">Проект Всемирного Банка</a></li>
-                            <li><a class="menu_link" href="international_coop.html">Международное сотрудничество</a></li>
-                            <li><a class="menu_link" href="news.html">Новости</a></li>
-                            <li><a class="menu_link" href="contacts.html">Контакты</a></li>
+                            <li><a class="menu_link" href="world_bank">Проект Всемирного Банка</a></li>
+                            <li><a class="menu_link" href="international_coop">Международное сотрудничество</a></li>
+                            <li><a class="menu_link" href="news">Новости</a></li>
+                            <li><a class="menu_link" href="contacts">Контакты</a></li>
                         </ul>
                     </div>
                 </div>

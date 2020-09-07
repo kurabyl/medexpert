@@ -101,6 +101,42 @@ $(document).ready(function(){
         slidesToScroll: 1,
       }
     }]
+  }).on('setPosition', function (event, slick) {
+    slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+  });
+
+  $('.cert_list').slick({
+    autoplay: false,
+    arrows: false,
+    dots: true,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    speed: 1000,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    prevArrow: '<button type="button" class="slick_arrow slick_prev"></button>',
+    nextArrow: '<button type="button" class="slick_arrow slick_next"></button>',
+    responsive:[{
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 570,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 400,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      }
+    }]
   });
 
   tabContentHeight();
@@ -126,6 +162,17 @@ $(window).on("scroll", function(){
   scrollPos = st;
 });
 
+
+$('.gos-list__heading').on("click", function(event){
+  if($(this).hasClass('active')){
+    $(this).removeClass('active');
+    $(this).siblings('.gos-list__content').slideUp(800);
+  }
+  else{
+    $(this).addClass('active');
+    $(this).siblings('.gos-list__content').slideDown(800);
+  }
+});
 
 
 $(document).on("click", function(event){
@@ -159,6 +206,8 @@ $('.lang_choice').on("click", function(){
 $(window).resize(function(){
   mobMenu();
   tabContentHeight();
+
+  $('.map_info').height( $('.map_info_item.active').outerHeight() );
 });
 
 function mobMenu(){
@@ -260,7 +309,7 @@ $('.map_oblast').on("mouseleave", function(){
 });
 
 
-$('.map_oblast, .city, .mobile_map_item').on("click", function(){
+$('.map_oblast, .city, .mobile_map_item, .map_more').on("click", function(){
   var id;
   var pos, blockHeight;
 
@@ -295,6 +344,24 @@ $('.map_oblast, .city, .mobile_map_item').on("click", function(){
     $('.city.' + id).addClass('active');
   }
 
+  if( $(this).hasClass('map_more') ){
+
+    $('.map_info_item.active').find('.info_sidebar_item').removeClass('active');
+    $('.map_info_item.active').find('.info_content_item').removeClass('active');
+
+    var dataIndex = $(this).attr('data-index');
+    console.log("dataIndex = " + dataIndex);
+    $('.map_info_item.active').find('.info_sidebar_item').eq(dataIndex).addClass('active');
+    $('.map_info_item.active').find('.info_content_item').eq(dataIndex).addClass('active');
+
+    $('html, body').stop().animate({ scrollTop: $('.map_section').offset().top - 100 }, 1000, 'swing', function(){});
+
+  } else{
+    $('.map_info_item.active').find('.info_sidebar_item').eq(0).addClass('active');
+    $('.map_info_item.active').find('.info_content_item').eq(0).addClass('active');
+  }
+  
+
   blockHeight = $('.map_info_item.active').outerHeight();
 
   if( blockHeight != undefined ){
@@ -309,6 +376,15 @@ $('.map_oblast, .city, .mobile_map_item').on("click", function(){
 
 $('.map_info_close').on("click", function(){
   $('.map_info, .map_oblast.active, .city.active, .map_info_item.active, .mobile_map_item.active').removeClass('active');
+});
+
+$('.info_sidebar_item').on("click", function(){
+  $('.info_content_item, .info_sidebar_item').removeClass('active');
+  var infoIndex = $(this).index();
+  $(this).addClass('active');
+  $(this).parent('.info_sidebar').siblings('.info_content').children('.info_content_item').eq(infoIndex).addClass('active');
+
+  $('.map_info').height( $('.map_info_item.active').outerHeight() );
 });
 
 
@@ -428,6 +504,8 @@ $( document ).ready(function() {
     console.log("true");
     $('.eye_btn').trigger("click");
     $('section').addClass('img_hide');
+    $('.eye_btn').removeClass('eye_btn_true');
+    $('.spec_block_list').hide();
   }else{
     console.log("false");
     $('body').removeClass("spec");
@@ -502,3 +580,63 @@ $('.size_list_item').on("click", function() {
 
 
 // Spec END
+
+
+// Team popup
+
+$('.team_item, .dir_block_inner').on("click", function(){
+  var team_img = $(this).children('.team_img').children('img').attr('src');
+  var team_name = $(this).children('.team_name').text();
+  var team_pos = $(this).children('.dir_position').text();
+  var team_text = $(this).children('.team_img').attr('data-text');
+
+  if( $(this).hasClass('dir_block_inner') ){
+    team_img = $(this).children('.dir_img').children('img').attr('src');
+    team_name = $(this).children('.dir_text').children('.dir_name').text();
+    team_pos = $(this).children('.dir_text').children('.dir_position').text();
+    team_text = $(this).children('.dir_img').attr('data-text');
+  }
+
+  $('#team_popup_id').children('.team_info_heading').children('.team_img').children('img').attr('src', team_img);
+  $('#team_popup_id').children('.team_info_heading').children('.team_info_name').children('.team_name').text(team_name);
+  $('#team_popup_id').children('.team_info_heading').children('.team_info_name').children('.dir_position').text(team_pos);
+  $('#team_popup_id').children('.team_info_text').html(team_text);
+
+});
+
+
+// Team popup END
+
+
+// Vakancy
+
+if( $('.vakancy_list').hasClass('vakancy_list') ){
+  var firstId = $('#selectRegion').children('option').eq(0).attr('data-id');
+  $('.vakancy_list').children('.table_block[data-table-id="' + firstId + '"]').show();
+}
+
+$('#selectRegion').on("change", function(){
+  // var selIndex = $(this).children('option:selected').index();
+  // $('.vakancy_list').children('.table_block').hide();
+  // $('.vakancy_list').children('.table_block').eq(selIndex).show();
+  var setId = $(this).children('option:selected').attr('data-id');
+  $('.vakancy_list').children('.table_block').hide();
+  $('.vakancy_list').children('.table_block[data-table-id="' + setId + '"]').show();
+});
+
+// Vakancy END
+
+
+// Expertises
+
+$('.expertise-item__heading').on("click", function(){
+  if( $(this).hasClass('active') ){
+    $(this).removeClass('active');
+    $(this).siblings('.iex-ul').slideUp(800);
+  } else{
+    $(this).addClass('active');
+    $(this).siblings('.iex-ul').slideDown(800);
+  }
+});
+
+// Expertises END
