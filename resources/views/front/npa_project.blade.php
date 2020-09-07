@@ -21,39 +21,13 @@
 				</div> -->
 					<div class="title small_title">Проекты разрабатываемых нормативных правовых актов</div>
 					<div class="npa_list">
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 1.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 2.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 3.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 4.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 5.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 6.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 7.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 8.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 9.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 10.pdf</a>
-						</div>
-						<div class="npa_list_item">
-							<a class="npa_list_link" href="javascript:;" target="_blank">План работы 11.pdf</a>
-						</div>
+                        @if($npaProjects->count() > 0)
+                            @foreach($npaProjects as $item)
+                                <div class="npa_list_item">
+                                    <a class="npa_list_link" href="#" target="_blank" download>{{ $item->title }}</a>
+                                </div>
+                            @endforeach
+                        @endif
 					</div>
 				@include('include.partner')
 			</div>

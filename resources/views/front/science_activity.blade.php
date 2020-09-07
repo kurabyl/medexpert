@@ -20,13 +20,17 @@
 					<img src="img/history_img.jpg" alt="">
 				</div> -->
 					<div class="title small_title">Научная деятельность</div>
+                @if($activites->count() > 0)
+                    @foreach($activites as $item)
 					<div class="science_item">
 	                    	                    <div class="science_text">
-	                        <div class="science_name">О внесении изменения в приказ Председателя Комитета технического регулирования от 11 января 2019 года</div>
+	                        <div class="science_name">{{ $item->title }}</div>
 	                        <div class="text_item"> </div>
-	                        <a class="science_more" href="/files/activities/fb42b96c362e84a9ed67cfe5f79c7fc0.pdf">№131-од от 29.03.2019г. изменение приложение 1</a>
+	                        <a class="science_more" href="#">{{ $item->file_more }}</a>
 	                    </div>
 	                </div>
+                    @endforeach
+                @endif
 				@include('include.partner')
 			</div>
 			@include('include.sidebar')

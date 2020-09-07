@@ -21,21 +21,23 @@
 				</div> -->
 				<div class="title small_title">Виды проводимых экспертиз</div>
 						<div class="expertise_type">
-							<div class="expertise-item">
-                                <div class="expertise-item__heading">Судебная фототехническая экспертиза</div>
-                             
-                                    <ul class="iex-ul">
-                                        <li>
-                                            <a href="">Судебно-экспертное фототехническое исследование</a>
-                                        </li>
-                                     	<li>
-                                            <a href="">Судебно-экспертное фототехническое исследование</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Судебно-экспертное фототехническое исследование</a>
-                                        </li>
-                                    </ul>
-                            </div>
+                            @if($expertise->count() > 0)
+                                @foreach($expertise as $item)
+                                    <div class="expertise-item">
+                                        <div class="expertise-item__heading">{{ $item->title }}</div>
+
+                                            <ul class="iex-ul">
+                                                @foreach($item->expertiseList($item->id) as $listItem)
+                                                    <li>
+                                                        <a href="{{ url('expertise/view/'.$listItem->id) }}">{{ $listItem->title }}</a>
+                                                    </li>
+
+                                                @endforeach
+                                            </ul>
+                                    </div>
+                                @endforeach
+                            @endif
+
 						</div>
 				@include('include.partner')
 			</div>

@@ -28,15 +28,9 @@ Route::get('/structure', function () {
     return view('front.structure');
 });
 
-Route::get('/expertise_type', function () {
-    return view('front.expertise_type');
-});
-Route::get('/work_plan', function () {
-    return view('front.work_plan');
-});
-Route::get('/npa_base', function () {
-    return view('front.npa_base');
-});
+Route::get('/expertise_type', 'ActivityController@expertise');
+Route::get('/work_plan', 'ActivityController@planWork');
+Route::get('/npa_base', 'ActivityController@npaBase');
 Route::get('/npa_project', function () {
     return view('front.npa_project');
 });
