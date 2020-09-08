@@ -53,7 +53,7 @@ class ActivityController extends Controller
     {
         $activites = ScienceActivity::all();
 
-        return view('front.npa_project',[
+        return view('front.science_activity',[
             '$activites'=>$activites
         ]);
     }

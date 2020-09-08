@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Traits\Uploader;
 use App\WorkPlan;
+use App\NpaBase;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -34,6 +35,34 @@ class ActivityController extends Controller
             return redirect()->back()->with('success','Успешно добавлено');
         }
 
+
+    }
+    public function NpaBase()
+    {
+        $npabase = NpaBase::all();
+        return view('admin.activity.npabase',[
+            'npabase'=>$npabase
+        ]);
+    }
+
+    public function postNpaBase(Request $request)
+    {
+        $npabase = new NpaBase();
+        $npabase->title = $request->title;
+        $npabase->link = $request->link;
+        if ($npabase->save()) {
+            return redirect()->back()->with('success','Успешно добавлено');
+        }
+
+    }
+    public function removeNpaBase($id, Request $request)
+    {
+        $npabase = NpaBase::find($id);
+        
+        if ( $npabase->delete()) {
+            return redirect()->back()->with('success','Успешно удалено');
+        }
+        return redirect()->back()->with('error','Повторите еще раз');
 
     }
 }

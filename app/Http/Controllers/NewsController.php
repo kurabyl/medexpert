@@ -18,7 +18,21 @@ class NewsController extends Controller
     {
         $news = News::paginate(PAGE);
     }
+    public function index()
+    {
+        $news = News::paginate(10);
 
+        return view('front.news',[
+            'news'=>$news
+        ]);
+    }
+    public function view($id)
+    {
+        $news = News::findOrFail($id);
+         return view('front.news_view',[
+            'data'=>$news
+        ]);
+    }
     public function show($id)
     {
         $news = News::findOrFail($id);
@@ -55,4 +69,5 @@ class NewsController extends Controller
         $news->delete();
 
     }
+    
 }

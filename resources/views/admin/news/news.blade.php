@@ -27,8 +27,8 @@
                 <td>{{ $item->title }}</td>
                 <td><img src="{{  asset('news/'.$item->image)}}" alt=""></td>
                 <td>
-                    <a href="{{ url('news/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('news/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/news/editnews/'.$item->id) }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('admin/news/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
