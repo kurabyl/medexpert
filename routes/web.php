@@ -42,3 +42,10 @@ Route::get('/science_activity', function () {
 Route::get('/cert_standart', function () {
     return view('front.cert_standart');
 });
+
+Auth::routes();
+
+Route::prefix('admin')->group(function () {
+    Route::get('planwork','Admin\ActivityController@planWork');
+    Route::post('uploadWorkPlan','Admin\ActivityController@postWorkPlan')->name('uploadWorkPlan');
+});
