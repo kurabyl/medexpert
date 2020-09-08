@@ -47,5 +47,8 @@ Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('planwork','Admin\ActivityController@planWork');
+    Route::get('news','Admin\NewsController@list');
+    Route::get('addnews','Admin\NewsController@addNews');
     Route::post('uploadWorkPlan','Admin\ActivityController@postWorkPlan')->name('uploadWorkPlan');
+    Route::post('postAddNews','Admin\NewsController@postAddNews')->name('postAddNews');
 });

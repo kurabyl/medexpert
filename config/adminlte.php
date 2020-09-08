@@ -250,8 +250,8 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Новости',
+            'url'  => 'admin/news',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
