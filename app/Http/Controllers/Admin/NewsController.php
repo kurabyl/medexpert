@@ -7,6 +7,7 @@ use App\Http\Requests\NewsRequest;
 use App\News;
 use App\Traits\Uploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class NewsController extends Controller
 {
@@ -54,12 +55,12 @@ class NewsController extends Controller
 
         $news = News::find($id);
         $news->title = $request->title;
-       
+
         if($request->has('file')) {
            $news->image = $this->upload($request,'news') ?? $request->old_image;
         }
         $news->text = $request->text;
-    
+
         if ($news->save()) {
             return redirect()->back()->with('success','Успешно добавлено');
         }
@@ -72,7 +73,7 @@ class NewsController extends Controller
         if ($news) {
             $news->image ? File::delete(public_path('image/'.$news->image)) : false;
         }
-       
+
         if ( $news->delete()) {
             return redirect()->back()->with('success','Успешно добавлено');
         }

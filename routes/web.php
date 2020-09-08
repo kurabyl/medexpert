@@ -43,6 +43,13 @@ Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('planwork','Admin\ActivityController@planWork');
+    Route::get('projectnpa','Admin\ActivityController@npaProjects');
+    Route::get('activites','Admin\ActivityController@activities');
+    Route::get('statics','Admin\ActivityController@statics');
+
+    Route::get('goszakup','Admin\ActivityController@goszakup');
+    Route::post('addUploadData','Admin\ActivityController@addUploadData')->name('addUploadData');
+
     Route::post('uploadWorkPlan','Admin\ActivityController@postWorkPlan')->name('uploadWorkPlan');
     Route::get('news','Admin\NewsController@list');
     Route::get('addnews','Admin\NewsController@addNews');
@@ -54,8 +61,21 @@ Route::prefix('admin')->group(function () {
     Route::get('npabase','Admin\ActivityController@NpaBase');
     Route::post('uploadNpaBase','Admin\ActivityController@postNpaBase')->name('uploadNpaBase');
      Route::get('/npabase/remove/{id}','Admin\ActivityController@removeNpaBase')->name('removeNpaBase');
+
+
+     /* ---- MAP ------- */
+    Route::post('addRegion','Admin\MapController@addRegion')->name('addRegion');
+    Route::post('addCity','Admin\MapController@addCity')->name('addCity');
+    Route::post('addObjects','Admin\MapController@addObjects')->name('addObjects');
+
+    Route::get('map/regions','Admin\MapController@regions');
+    Route::get('map/cities','Admin\MapController@cities');
+    Route::get('map/objects','Admin\MapController@objects');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('lang/{lang}','LocalizationController@index');
+

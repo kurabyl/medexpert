@@ -231,94 +231,67 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'План работы',
-            'url'  => 'admin/planwork',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'План работы ',
-            'url'         => 'admin/planwork',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'База НПА',
-            'url'         => 'admin/npabase',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+
         [
             'text' => 'Новости',
             'url'  => 'admin/news',
             'icon' => 'fas fa-fw fa-user',
         ],
+
+
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Деятельность',
+
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'База НПА',
+                    'url'  => 'admin/npabase',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'План работы',
+                    'url'  => 'admin/planwork',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Проекты НПА',
+                    'url'  => 'admin/projectnpa',
+                ],
+                [
+                    'text' => 'Научная деятельность',
+                    'url'  => 'admin/activites',
+                ],
+                [
+                    'text' => 'Аналитика и статистика',
+                    'url'  => 'admin/statics',
+                ],
+                [
+                    'text' => 'Гос закуп',
+                    'url'  => 'admin/goszakup',
+                ],
+                [
+                    'text' => 'Вакансии',
+                    'url'  => 'admin/vacancy',
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Карта',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Регионы',
+                    'url'  => 'admin/map/regions',
+                ],
+                [
+                    'text' => 'Город',
+                    'url'  => 'admin/map/cities',
+                ],
+                [
+                    'text' => 'Объекты',
+                    'url'  => 'admin/map/objects',
+                ],
+            ],
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
     ],
 
     /*

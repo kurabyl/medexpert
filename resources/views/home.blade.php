@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard22</h1>
+    <h1>{!! __('lang.name') !!}</h1>
 @stop
 
 @section('content')
