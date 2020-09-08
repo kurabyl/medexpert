@@ -72,9 +72,9 @@
                                 <a class="menu_link" href="javascript:;">О нас</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="about">История центра</a>
-                                        <a class="sub_link" href="ustav">Устав</a>
-                                        <a class="sub_link" href="structure">Структура</a>
+                                        <a class="sub_link" href="/about">История центра</a>
+                                        <a class="sub_link" href="/ustav">Устав</a>
+                                        <a class="sub_link" href="/structure">Структура</a>
                                     </div>
                                 </div>
                             </li>
@@ -82,15 +82,15 @@
                                 <a class="menu_link" href="javascript:;">Деятельность</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="expertise_type">Виды проводимых экспертиз</a>
-                                        <a class="sub_link" href="work_plan">План работы</a>
-                                        <a class="sub_link" href="npa_base">База НПА</a>
-                                        <a class="sub_link" href="npa_project">Проекты НПА</a>
-                                        <a class="sub_link" href="science_activity">Научная деятельность</a>
-                                        <a class="sub_link" href="cert_standart">Аккредитация Институтов</a>
-                                        <a class="sub_link" href="statistic">Аналитика и статистика</a>
-                                        <a class="sub_link" href="gos_zakup">Государственные закупки</a>
-                                        <a class="sub_link" href="vakancy">Вакансии</a>
+                                        <a class="sub_link" href="/expertise_type">Виды проводимых экспертиз</a>
+                                        <a class="sub_link" href="/work_plan">План работы</a>
+                                        <a class="sub_link" href="/npa_base">База НПА</a>
+                                        <a class="sub_link" href="/npa_project">Проекты НПА</a>
+                                        <a class="sub_link" href="/science_activity">Научная деятельность</a>
+                                        <a class="sub_link" href="/cert_standart">Аккредитация Институтов</a>
+                                        <a class="sub_link" href="/statistic">Аналитика и статистика</a>
+                                        <a class="sub_link" href="/gos_zakup">Государственные закупки</a>
+                                        <a class="sub_link" href="/vakancy">Вакансии</a>
                                     </div>
                                 </div>
                             </li>

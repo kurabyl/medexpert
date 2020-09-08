@@ -28,7 +28,14 @@ class NewsController extends Controller
     {
         return view('admin.news.add-news');
     }
+    public function editNews($id)
+    {
+        $item = News::find($id);
+        return view('admin.news.edit-news',[
+            'item'=>$item
+        ]);
 
+    }
     public function postAddNews(NewsRequest $request)
     {
         $news = new News;
@@ -37,6 +44,36 @@ class NewsController extends Controller
         $news->text = $request->text;
 
         if ($news->save()) {
+            return redirect()->back()->with('success','Успешно добавлено');
+        }
+        return redirect()->back()->with('error','Повторите еще раз');
+
+    }
+    public function postUpdateNews($id, NewsRequest $request)
+    {
+
+        $news = News::find($id);
+        $news->title = $request->title;
+       
+        if($request->has('file')) {
+           $news->image = $this->upload($request,'news') ?? $request->old_image;
+        }
+        $news->text = $request->text;
+    
+        if ($news->save()) {
+            return redirect()->back()->with('success','Успешно добавлено');
+        }
+        return redirect()->back()->with('error','Повторите еще раз');
+    }
+
+    public function removeNews($id, Request $request)
+    {
+        $news = News::find($id);
+        if ($news) {
+            $news->image ? File::delete(public_path('image/'.$news->image)) : false;
+        }
+       
+        if ( $news->delete()) {
             return redirect()->back()->with('success','Успешно добавлено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
