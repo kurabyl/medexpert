@@ -49,3 +49,7 @@ Route::prefix('admin')->group(function () {
     Route::get('planwork','Admin\ActivityController@planWork');
     Route::post('uploadWorkPlan','Admin\ActivityController@postWorkPlan')->name('uploadWorkPlan');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

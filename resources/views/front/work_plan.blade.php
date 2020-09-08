@@ -24,7 +24,7 @@
                         @if($workPlan->count() > 0)
                             @foreach($workPlan as $item)
                                     <div class="npa_list_item">
-                                        <a class="npa_list_link" href="#" target="_blank" download>{{ $item->title }}</a>
+                                        <a class="npa_list_link" href="{{ $item->files }}" target="_blank" download>{{ $item->title }}</a>
                                     </div>
                             @endforeach
                         @endif
