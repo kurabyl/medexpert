@@ -33,16 +33,26 @@ Route::get('/work_plan', 'ActivityController@planWork');
 Route::get('/npa_base', 'ActivityController@npaBase');
 Route::get('/npa_project', 'ActivityController@npaProjects');
 Route::get('/science_activity', 'ActivityController@scienceActivity');
+Route::get('/goszakup', 'ActivityController@gosZakup');
+Route::get('/statistic', 'ActivityController@analytics');
 Route::get('/news-all', 'NewsController@index');
 Route::get('/news/view/{id}', 'NewsController@view');
 Route::get('/cert_standart', function () {
     return view('front.cert_standart');
 });
+Route::get('/vacancy', 'VacancyController@index');
 
 Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('planwork','Admin\ActivityController@planWork');
+    Route::get('projectnpa','Admin\ActivityController@npaProjects');
+    Route::get('activites','Admin\ActivityController@activities');
+    Route::get('statics','Admin\ActivityController@statics');
+
+    Route::get('goszakup','Admin\ActivityController@goszakup');
+    Route::post('addUploadData','Admin\ActivityController@addUploadData')->name('addUploadData');
+
     Route::post('uploadWorkPlan','Admin\ActivityController@postWorkPlan')->name('uploadWorkPlan');
     Route::get('news','Admin\NewsController@list');
     Route::get('addnews','Admin\NewsController@addNews');
@@ -54,8 +64,40 @@ Route::prefix('admin')->group(function () {
     Route::get('npabase','Admin\ActivityController@NpaBase');
     Route::post('uploadNpaBase','Admin\ActivityController@postNpaBase')->name('uploadNpaBase');
      Route::get('/npabase/remove/{id}','Admin\ActivityController@removeNpaBase')->name('removeNpaBase');
+
+
+     /* ---- MAP ------- */
+    Route::post('addRegion','Admin\MapController@addRegion')->name('addRegion');
+    Route::post('addCity','Admin\MapController@addCity')->name('addCity');
+    Route::post('addObjects','Admin\MapController@addObjects')->name('addObjects');
+
+    Route::get('map/regions','Admin\MapController@regions');
+    Route::get('map/cities','Admin\MapController@cities');
+    Route::get('map/objects','Admin\MapController@objects');
+
+    /* ---- Vacancies ------- */
+     //Route::get('vacancy','Admin\VacancyController@index');
+    Route::group(["namespace" => "Admin","prefix" => 'vacancy'],function(){
+        Route::get('/','VacancyController@index');
+        Route::get('/create','VacancyController@create')->name('create_vacancy');
+        Route::post('/create','VacancyController@store')->name('store_vacancy');
+        Route::get('/delete/{id}','VacancyController@delete');
+        Route::get('/{item}','VacancyController@edit')->name('edit_vacancy');
+        Route::post('/{item}','VacancyController@update');
+    });
+    Route::group(["namespace" => "Admin","prefix" => 'staticpage'],function(){
+        Route::get('/','StaticPageController@index');
+        Route::get('/create','StaticPageController@create')->name('create_staticpage');
+        Route::post('/create','StaticPageController@store')->name('store_staticpage');
+        Route::get('/delete/{id}','StaticPageController@delete');
+        Route::get('/{item}','StaticPageController@edit')->name('edit_staticpage');
+        Route::post('/{item}','StaticPageController@update');
+    });
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('lang/{lang}','LocalizationController@index');
+

@@ -89,8 +89,8 @@
                                         <a class="sub_link" href="/science_activity">Научная деятельность</a>
                                         <a class="sub_link" href="/cert_standart">Аккредитация Институтов</a>
                                         <a class="sub_link" href="/statistic">Аналитика и статистика</a>
-                                        <a class="sub_link" href="/gos_zakup">Государственные закупки</a>
-                                        <a class="sub_link" href="/vakancy">Вакансии</a>
+                                        <a class="sub_link" href="/goszakup">Государственные закупки</a>
+                                        <a class="sub_link" href="/vacancy">Вакансии</a>
                                     </div>
                                 </div>
                             </li>
