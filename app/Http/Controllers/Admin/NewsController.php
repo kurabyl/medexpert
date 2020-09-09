@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsRequest;
 use App\News;
+use File;
 use App\Traits\Uploader;
 use Illuminate\Http\Request;
 
@@ -74,7 +75,7 @@ class NewsController extends Controller
         }
        
         if ( $news->delete()) {
-            return redirect()->back()->with('success','Успешно добавлено');
+            return redirect()->back()->with('success','Успешно удалено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
 
