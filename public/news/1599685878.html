@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-    <head>
+    <head>        
         <meta charset="utf-8">
         <title>
            Центр судебных экспертиз
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/css/jquery.fancybox.css" />
     </head>
     <body >
-
+        
         <header>
             <div class="header_fixed">
                 <div class="container">
@@ -50,9 +50,9 @@
                             <div class="lang_block">
                                 <div class="lang_choice">ru</div>
                                 <div class="other_lang">
-                                    <a class="lang active" href="{{ url('lang/ru') }}">ru</a>
-                                    <a class="lang" href="{{ url('lang/kk') }}">kz</a>
-                                    <a class="lang" href="{{ url('lang/en') }}">en</a>
+                                    <a class="lang active" href="javascript:;">ru</a>
+                                    <a class="lang" href="javascript:;">kz</a>
+                                    <a class="lang" href="javascript:;">en</a>
                                 </div>
                             </div>
                             <div class="mob_menu">
@@ -72,9 +72,9 @@
                                 <a class="menu_link" href="javascript:;">О нас</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="/about">История центра</a>
-                                        <a class="sub_link" href="/ustav">Устав</a>
-                                        <a class="sub_link" href="/structure">Структура</a>
+                                        <a class="sub_link" href="about">История центра</a>
+                                        <a class="sub_link" href="ustav">Устав</a>
+                                        <a class="sub_link" href="structure">Структура</a>
                                     </div>
                                 </div>
                             </li>
@@ -82,15 +82,15 @@
                                 <a class="menu_link" href="javascript:;">Деятельность</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="/expertise_type">Виды проводимых экспертиз</a>
-                                        <a class="sub_link" href="/work_plan">План работы</a>
-                                        <a class="sub_link" href="/npa_base">База НПА</a>
-                                        <a class="sub_link" href="/npa_project">Проекты НПА</a>
-                                        <a class="sub_link" href="/science_activity">Научная деятельность</a>
-                                        <a class="sub_link" href="/cert_standart">Аккредитация Институтов</a>
-                                        <a class="sub_link" href="/statistic">Аналитика и статистика</a>
-                                        <a class="sub_link" href="/goszakup">Государственные закупки</a>
-                                        <a class="sub_link" href="/vacancy">Вакансии</a>
+                                        <a class="sub_link" href="expertise_type">Виды проводимых экспертиз</a>
+                                        <a class="sub_link" href="work_plan">План работы</a>
+                                        <a class="sub_link" href="npa_base">База НПА</a>
+                                        <a class="sub_link" href="npa_project">Проекты НПА</a>
+                                        <a class="sub_link" href="science_activity">Научная деятельность</a>
+                                        <a class="sub_link" href="cert_standart">Аккредитация Институтов</a>
+                                        <a class="sub_link" href="statistic">Аналитика и статистика</a>
+                                        <a class="sub_link" href="gos_zakup">Государственные закупки</a>
+                                        <a class="sub_link" href="vakancy">Вакансии</a>
                                     </div>
                                 </div>
                             </li>
@@ -116,12 +116,169 @@
         <div class="popup" id="alert_popup">
             <div class="alert ">
                 <div class="container">
-
+                   
                     <div class="my-alert__close"></div>
                 </div>
-            </div>
+            </div> 
         </div>
-        @yield('content')
+        <section class="page page_heading">
+			<img class="page_heading_img" src="img/page_heading.jpg" alt=""></img>
+			<div class="container">
+				<div class="title">План работы</div>
+				<ul class="breadcrumbs">
+					<li><a href="index.html">Главная</a></li>
+					<li><a>Деятельность</a></li>
+					<li><a>План работы</a></li>
+				</ul>
+			</div>
+		</section>
+
+<section class="page_section">
+	<div class="container">
+		<div class="page_block">
+			<div class="page_content histoty_content">
+				<!-- <div class="history_img">
+					<img src="img/history_img.jpg" alt="">
+				</div> -->
+					<div class="title small_title">План работы Центра Судебных Экспертиз</div>
+					<div class="npa_list">
+                                                                                        <div class="npa_list_item">
+                                        <a class="npa_list_link" href="#" target="_blank" download>text</a>
+                                    </div>
+                                                    
+					</div>
+				<div class="about_partners">
+	<div class="title title_left">Полезные ссылки</div>
+	<div class="partner_list">
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+		<div>
+			<a class="partner" href="javascript:;" target="_blank">
+				<div class="partner_img">
+					<img src="/img/inter_1.png">
+				</div>	
+				<span class="partner__heading">
+					Национальное бюро экспертиз Национальной академии наук Республики Армения					
+				</span>
+			</a>
+		</div>
+	</div>
+</div>			</div>
+			<div class="page_sidebar">
+		<div class="title">Новости</div>
+		<div class="news">
+			<div class="news_item">
+				<a class="news_img" href="javascript:;">
+					<img src="img/news_1.jpg" alt="">
+				</a>
+				<div class="about_news">
+					<div class="news_date">30.07.2020</div>
+					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
+					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
+				</div>
+			</div>
+			<div class="news_item">
+				<a class="news_img" href="javascript:;">
+					<img src="img/news_2.jpg" alt="">
+				</a>
+				<div class="about_news">
+					<div class="news_date">30.07.2020</div>
+					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
+					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
+				</div>
+			</div>
+			<div class="news_item">
+				<a class="news_img" href="javascript:;">
+					<img src="img/news_3.jpg" alt="">
+				</a>
+				<div class="about_news">
+					<div class="news_date">30.07.2020</div>
+					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
+					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
+				</div>
+			</div>
+			<div class="news_item">
+				<a class="news_img" href="javascript:;">
+					<img src="img/news_4.jpg" alt="">
+				</a>
+				<div class="about_news">
+					<div class="news_date">30.07.2020</div>
+					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
+					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
+				</div>
+			</div>
+		</div>
+	</div>		</div>
+	</div>
+</section>
         <footer>
             <div class="container">
                 <div class="footer_top">
@@ -175,9 +332,9 @@
         </footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="/js/jquery-3.0.0.min.js"></script>
-        <script src="/js/slick.min.js"></script>
-        <script src="/js/script.js?v=1.14"></script>
-        <script src="/js/jquery.fancybox.min.js"></script>
+        <script src="/js/slick.min.js"></script>         
+        <script src="/js/script.js?v=1.14"></script>    
+        <script src="/js/jquery.fancybox.min.js"></script>    
         <!--[if lt IE 9]>
         <script src="/libs/html5shiv/es5-shim.min.js"></script>
         <script src="/libs/html5shiv/html5shiv.min.js"></script>

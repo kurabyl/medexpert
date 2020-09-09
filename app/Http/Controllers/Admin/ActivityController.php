@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Analytics;
+use App\Expertise;
 use App\GosZakup;
 use App\Http\Controllers\Controller;
 use App\NpaProject;
@@ -27,6 +28,24 @@ class ActivityController extends Controller
 
         return view('admin.activity.planwork',[
             'workPlan'=>$workPlan
+        ]);
+    }
+
+    public function expertise()
+    {
+        $expertise = Expertise::parentId(0)->get();
+
+        return view('admin.activity.expertise',[
+            'expertise'=>$expertise
+        ]);
+    }
+
+    public function viewExpertise($id)
+    {
+        $expertise = Expertise::parentId($id)->get();
+
+        return view('admin.activity.expertiseposts',[
+            'expertise'=>$expertise
         ]);
     }
 

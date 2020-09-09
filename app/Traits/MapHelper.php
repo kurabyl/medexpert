@@ -17,6 +17,7 @@ trait MapHelper
             case 1:
                 $region = new Region;
                 $region->name = $request->name;
+                $region->keys = $request->keys;
                 if ($region->save()) {
                     return true;
                 }

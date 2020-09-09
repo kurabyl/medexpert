@@ -23,6 +23,14 @@
             <textarea name="text" id="" cols="30" rows="10">{{$item->text}}</textarea>
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Язык</label>
+            <select name="lang" >
+                <option value="ru" @if($item->lang == 'ru') selected @endif>Русский</option>
+                <option value="kk" @if($item->lang == 'kk') selected @endif>Казахский</option>
+                <option value="en" @if($item->lang == 'en') selected @endif>Английский</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">Картинка</label>
             <img src="{{  asset('news/'.$item->image)}}" alt="" style="max-height: 200px;">
         </div>

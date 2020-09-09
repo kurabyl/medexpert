@@ -244,6 +244,10 @@ return [
 
             'submenu' => [
                 [
+                    'text' => 'Вид экспертиза',
+                    'url'  => 'admin/experise',
+                ],
+                [
                     'text' => 'База НПА',
                     'url'  => 'admin/npabase',
                 ],
@@ -264,7 +268,7 @@ return [
                     'url'  => 'admin/statics',
                 ],
                 [
-                    'text' => 'Гос закуп',
+                    'text' => 'Государственные закупки',
                     'url'  => 'admin/goszakup',
                 ],
                 [

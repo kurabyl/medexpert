@@ -43,6 +43,7 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->image = $this->uploadPublic($request,'news') ?? '';
         $news->text = $request->text;
+        $news->lang = $request->lang;
 
         if ($news->save()) {
             return redirect()->back()->with('success','Успешно добавлено');
@@ -60,6 +61,7 @@ class NewsController extends Controller
            $news->image = $this->upload($request,'news') ?? $request->old_image;
         }
         $news->text = $request->text;
+        $news->lang = $request->lang;
 
         if ($news->save()) {
             return redirect()->back()->with('success','Успешно добавлено');

@@ -5,6 +5,7 @@ namespace App\Traits;
 
 
 use App\Analytics;
+use App\Expertise;
 use App\GosZakup;
 use App\NpaProject;
 use App\ScienceActivity;
@@ -48,6 +49,24 @@ trait ActivityHelper
                     return true;
                 }
             break;
+
+            case 5:
+                $add = new Expertise();
+                $add->title = $request->title;
+                if ($add->save()) {
+                    return true;
+                }
+            break;
+            case 6:
+                $add = new Expertise();
+                $add->title = $request->title;
+                $add->parent_id = $request->id;
+                $add->text = $request->text;
+                if ($add->save()) {
+                    return true;
+                }
+            break;
+
         }
         return false;
     }

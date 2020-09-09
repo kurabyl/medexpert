@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Map\City;
+use App\Map\CityObject;
+use App\Map\Region;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -15,5 +18,13 @@ class AboutController extends Controller
     public function charter()
     {
         $charter = About::page(About::CHARTER);
+    }
+
+    public function map()
+    {
+        $city = CityObject::all();
+        return view('front.home',[
+            'city'=>$city
+        ]);
     }
 }

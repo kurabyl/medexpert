@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.home');
-});
+Route::get('/', 'AboutController@map');
 
 Route::get('/about', function () {
     return view('front.about');
@@ -45,6 +43,8 @@ Route::get('/vacancy', 'VacancyController@index');
 Auth::routes();
 
 Route::prefix('admin')->group(function () {
+    Route::get('expertise','Admin\ActivityController@expertise');
+    Route::get('view/expertise/{id}','Admin\ActivityController@viewExpertise');
     Route::get('planwork','Admin\ActivityController@planWork');
     Route::get('projectnpa','Admin\ActivityController@npaProjects');
     Route::get('activites','Admin\ActivityController@activities');
@@ -99,5 +99,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('lang/{lang}','LocalizationController@index');
+Route::get('lang/{lang}', function($lang){
+    Session::put('locale', $lang);
+    return redirect()->back();
+});
 

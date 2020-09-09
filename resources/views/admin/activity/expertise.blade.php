@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Регионы</h1>
+    <h1>Вид экспертиз</h1>
 @stop
 
 @section('content')
@@ -16,20 +16,19 @@
         <tr>
             <th>#</th>
             <th>Название</th>
-
+            <th>Записи</th>
             <th>Действие</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($regions as $item)
+        @foreach($expertise as $item)
             <tr>
                 <td>{{ $loop->index +1 }}</td>
-                <td>{{ $item->name }}</td>
-
-
+                <td><a href="{{ url('admin/view/expertise/'.$item->id) }}">{{ $item->title }}</a></td>
+                <td>{{ $item->expertiseList($item->id)->count() }}</td>
                 <td>
-                    <a href="{{ url('npabase/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('admin/npabase/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('planwork/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -47,26 +46,24 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('addRegion') }}" method="post" enctype="multipart/form-data">
-                    <div class="modal-body">
+                <form action="{{ route('addUploadData') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
 
                         @csrf
-                        <input type="hidden" name="type" value="1">
+                    <input type="hidden" name="type" value="5">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Название</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="title" class="form-control">
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Ключ</label>
-                            <input type="text" name="keys" class="form-control">
-                        </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
                 </form>
             </div>
         </div>

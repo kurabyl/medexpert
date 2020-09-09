@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Регионы</h1>
+    <h1>Пост экспертиз</h1>
 @stop
 
 @section('content')
@@ -16,20 +16,19 @@
         <tr>
             <th>#</th>
             <th>Название</th>
-
+            <th>Описание</th>
             <th>Действие</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($regions as $item)
+        @foreach($expertise as $item)
             <tr>
                 <td>{{ $loop->index +1 }}</td>
-                <td>{{ $item->name }}</td>
-
-
+                <td>{{ $item->title }}</td>
+                <td>{!! $item->text !!}  </td>
                 <td>
-                    <a href="{{ url('npabase/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('admin/npabase/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('planwork/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -47,26 +46,32 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('addRegion') }}" method="post" enctype="multipart/form-data">
-                    <div class="modal-body">
+                <form action="{{ route('addUploadData') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
 
                         @csrf
-                        <input type="hidden" name="type" value="1">
-                        <div class="form-group">
+
+                    <input type="hidden" name="type" value="6">
+                    <input type="hidden" name="id" value="{{ request()->id }}">
+
+                    <div class="form-group">
                             <label for="exampleInputEmail1">Название</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="title" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Ключ</label>
-                            <input type="text" name="keys" class="form-control">
+                            <label for="exampleInputEmail1">Текст</label>
+                            <textarea name="text" class="form-control"></textarea>
                         </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
                 </form>
             </div>
         </div>
@@ -84,5 +89,10 @@
         $(document).ready( function () {
             $('#table_id').DataTable();
         } );
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'text' );
     </script>
 @stop
