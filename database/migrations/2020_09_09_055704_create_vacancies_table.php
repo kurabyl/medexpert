@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCertificateVacanciesTable extends Migration
+class CreateVacanciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,8 @@ class CreateCertificateVacanciesTable extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('region_id');
+            $table->text('text')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCertificateVacanciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('certificate_vacancies');
+        Schema::dropIfExists('vacancies');
     }
 }

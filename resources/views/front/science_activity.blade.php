@@ -24,9 +24,9 @@
                     @foreach($activites as $item)
 					<div class="science_item">
 	                    	                    <div class="science_text">
-	                        <div class="science_name">{{ $item->title }}</div>
+	                        <div class="science_name">{{ $item->file_more }}</div>
 	                        <div class="text_item"> </div>
-	                        <a class="science_more" href="#">{{ $item->file_more }}</a>
+	                        <a class="science_more" href="#">{{ $item->title }}</a>
 	                    </div>
 	                </div>
                     @endforeach

@@ -33,11 +33,14 @@ Route::get('/work_plan', 'ActivityController@planWork');
 Route::get('/npa_base', 'ActivityController@npaBase');
 Route::get('/npa_project', 'ActivityController@npaProjects');
 Route::get('/science_activity', 'ActivityController@scienceActivity');
+Route::get('/goszakup', 'ActivityController@gosZakup');
+Route::get('/statistic', 'ActivityController@analytics');
 Route::get('/news-all', 'NewsController@index');
 Route::get('/news/view/{id}', 'NewsController@view');
 Route::get('/cert_standart', function () {
     return view('front.cert_standart');
 });
+Route::get('/vacancy', 'VacancyController@index');
 
 Auth::routes();
 
@@ -71,6 +74,25 @@ Route::prefix('admin')->group(function () {
     Route::get('map/regions','Admin\MapController@regions');
     Route::get('map/cities','Admin\MapController@cities');
     Route::get('map/objects','Admin\MapController@objects');
+
+    /* ---- Vacancies ------- */
+     //Route::get('vacancy','Admin\VacancyController@index');
+    Route::group(["namespace" => "Admin","prefix" => 'vacancy'],function(){
+        Route::get('/','VacancyController@index');
+        Route::get('/create','VacancyController@create')->name('create_vacancy');
+        Route::post('/create','VacancyController@store')->name('store_vacancy');
+        Route::get('/delete/{id}','VacancyController@delete');
+        Route::get('/{item}','VacancyController@edit')->name('edit_vacancy');
+        Route::post('/{item}','VacancyController@update');
+    });
+    Route::group(["namespace" => "Admin","prefix" => 'staticpage'],function(){
+        Route::get('/','StaticPageController@index');
+        Route::get('/create','StaticPageController@create')->name('create_staticpage');
+        Route::post('/create','StaticPageController@store')->name('store_staticpage');
+        Route::get('/delete/{id}','StaticPageController@delete');
+        Route::get('/{item}','StaticPageController@edit')->name('edit_staticpage');
+        Route::post('/{item}','StaticPageController@update');
+    });
 });
 
 Auth::routes();

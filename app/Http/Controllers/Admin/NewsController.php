@@ -75,7 +75,7 @@ class NewsController extends Controller
         }
 
         if ( $news->delete()) {
-            return redirect()->back()->with('success','Успешно добавлено');
+            return redirect()->back()->with('success','Успешно удалено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
 

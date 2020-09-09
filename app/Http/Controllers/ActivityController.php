@@ -8,6 +8,9 @@ use App\NpaProject;
 use App\ScienceActivity;
 use App\Traits\Uploader;
 use App\WorkPlan;
+use App\GosZakup;
+use App\Analytics;
+
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -54,7 +57,23 @@ class ActivityController extends Controller
         $activites = ScienceActivity::all();
 
         return view('front.science_activity',[
-            '$activites'=>$activites
+            'activites'=>$activites
+        ]);
+    }
+    public function gosZakup()
+    {
+        $goszakup = GosZakup::all();
+
+        return view('front.goszakup',[
+            'goszakup'=>$goszakup
+        ]);
+    }
+    public function analytics()
+    {
+        $analytics = Analytics::all();
+
+        return view('front.statistics',[
+            'analytics'=>$analytics
         ]);
     }
 }
