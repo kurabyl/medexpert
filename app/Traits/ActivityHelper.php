@@ -88,7 +88,9 @@ trait ActivityHelper
                 $add =  ScienceActivity::find($request->id);
                 $add->title = $request->title;
                 $add->file_more = $request->file_more;
-                $add->files = $this->uploadStorage($request,'activies') ?? '';
+                if ($request->hasFile('file')) {
+                    $add->files = $this->uploadStorage($request,'activies') ?? '';
+                }
                 if ($add->save()) {
                     return true;
                 }
@@ -96,7 +98,9 @@ trait ActivityHelper
             case 3:
                 $add =  Analytics::find($request->id);
                 $add->title = $request->title;
-                $add->files = $this->uploadStorage($request,'analytics') ?? '';
+                if ($request->hasFile('file')) {
+                    $add->files = $this->uploadStorage($request, 'analytics') ?? '';
+                }
                 if ($add->save()) {
                     return true;
                 }
@@ -118,10 +122,10 @@ trait ActivityHelper
                 }
                 break;
             case 6:
-                $add =  Expertise::find($request->id);
+                $add =  Expertise::find($request->post_id);
                 $add->title = $request->title;
                 $add->parent_id = $request->id;
-                $add->text = $request->text;
+                $add->text = $request->text_;
                 if ($add->save()) {
                     return true;
                 }

@@ -27,7 +27,7 @@
                 <td>{{ $item->title }}</td>
                 <td>{!! $item->text !!}  </td>
                 <td>
-                    <a href="{{ url('admin/view/expertise/'.$item->id.'?post_id#editModal') }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('admin/view/expertise/'.request()->id.'?post_id='.$item->id.'#editModal') }}"><i class="fas fa-edit"></i></a>
                     <a href="{{ url('admin/view/expertise/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
@@ -78,18 +78,27 @@
     </div>
 
     <div id="editModal" class="modalDialog">
-        <div>
+        <div style="width: 900px;top: -10%;">
             <a href="#close" title="Закрыть" class="close">X</a>
             <h4>Редактировать</h4>
             <form action="{{ route('updateUploadData') }}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     @csrf
-                    <input type="hidden" name="type" value="5">
-                    <input type="hidden" name="id" value="{{ request()->post_id }}">
+                    <input type="hidden" name="type" value="6">
+                    <input type="hidden" name="id" value="{{ request()->id }}">
+                    <input type="hidden" name="post_id" value="{{ request()->post_id }}">
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">Название</label>
                         <input type="text" name="title" class="form-control" value="{{ $find->title ?? '' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Текст</label>
+                        <textarea name="text_" class="form-control">
+                            {!! $find->text ?? '' !!}
+                        </textarea>
                     </div>
 
 
@@ -122,5 +131,6 @@
     <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'text' );
+        CKEDITOR.replace( 'text_' );
     </script>
 @stop

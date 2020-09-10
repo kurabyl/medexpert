@@ -38,8 +38,12 @@ Route::get('/news/view/{id}', 'NewsController@view');
 Route::get('/cert_standart', function () {
     return view('front.cert_standart');
 });
+Route::get('/gos_services', function () {
+    return view('front.gos_services');
+});
+Route::get('/staticpage/{slug}','StaticPageController@show');
 Route::get('/vacancy', 'VacancyController@index');
-
+Route::get('/faqs', 'FaqsController@index');
 Auth::routes();
 
 Route::prefix('admin')->group(function () {
@@ -95,6 +99,22 @@ Route::prefix('admin')->group(function () {
         Route::post('/{item}','StaticPageController@update');
     });
 
+    Route::group(["namespace" => "Admin","prefix" => 'partners'],function(){
+        Route::get('/','PartnersController@index');
+        Route::get('/create','PartnersController@create')->name('create_partner');
+        Route::post('/create','PartnersController@store')->name('store_partner');
+        Route::get('/delete/{id}','PartnersController@delete');
+        Route::get('/{item}','PartnersController@edit')->name('edit_partner');
+        Route::post('/{item}','PartnersController@update');
+    });
+    Route::group(["namespace" => "Admin","prefix" => 'faqs'],function(){
+        Route::get('/','FaqsController@index');
+        Route::get('/create','FaqsController@create')->name('create_faq');
+        Route::post('/create','FaqsController@store')->name('store_faq');
+        Route::get('/delete/{id}','ParFaqsControllertnersController@delete');
+        Route::get('/{item}','FaqsController@edit')->name('edit_faq');
+        Route::post('/{item}','FaqsController@update');
+    });
 
 });
 

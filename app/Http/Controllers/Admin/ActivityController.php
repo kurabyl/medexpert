@@ -103,9 +103,10 @@ class ActivityController extends Controller
     public function activities()
     {
         $activities = ScienceActivity::all();
-
+        $find = ScienceActivity::find(\request()->post_id ?? 0);
         return view('admin.activity.activities',[
-            'activities'=>$activities
+            'activities'=>$activities,
+            'find'=>$find
         ]);
     }
 
@@ -129,6 +130,14 @@ class ActivityController extends Controller
     public function addUploadData(Request $request)
     {
         if ($this->addActivityHandle($request)) {
+            return redirect()->back()->with('success','Успешно добавлено');
+        }
+        return redirect()->back()->with('error','Повторите еще раз');
+    }
+
+    public function updateUploadData(Request $request)
+    {
+        if ($this->updateActivityHandle($request)) {
             return redirect()->back()->with('success','Успешно добавлено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
