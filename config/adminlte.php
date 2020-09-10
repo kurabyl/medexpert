@@ -255,6 +255,16 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Команда',
+            'url'  => 'admin/teams',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Сертификат и слайд',
+            'url'  => 'admin/slides',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text'    => 'Деятельность',
 
             'submenu' => [

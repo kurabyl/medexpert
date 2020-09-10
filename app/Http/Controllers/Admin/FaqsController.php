@@ -75,9 +75,7 @@ class FaqsController extends Controller
         $item->title = $request->title;
         $item->text = $request->text;
         $item->lang = $request->lang;
-        if($request->has('file')) {
-           $item->image = $this->upload($request,'faqs') ?? $request->old_image;
-        }
+       
 
         if ($item->save()) {
             return redirect()->back()->with('success','Успешно добавлено');

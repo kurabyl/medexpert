@@ -113,6 +113,22 @@ Route::prefix('admin')->group(function () {
         Route::get('/{item}','FaqsController@edit')->name('edit_faq');
         Route::post('/{item}','FaqsController@update');
     });
+    Route::group(["namespace" => "Admin","prefix" => 'teams'],function(){
+        Route::get('/','TeamsController@index');
+        Route::get('/create','TeamsController@create')->name('create_team');
+        Route::post('/create','TeamsController@store')->name('store_team');
+        Route::get('/delete/{id}','TeamsController@delete');
+        Route::get('/{item}','TeamsController@edit')->name('edit_team');
+        Route::post('/{item}','TeamsController@update');
+    });
+    Route::group(["namespace" => "Admin","prefix" => 'slides'],function(){
+        Route::get('/','SlidesController@index');
+        Route::get('/create','SlidesController@create')->name('create_slide');
+        Route::post('/create','SlidesController@store')->name('store_slide');
+        Route::get('/delete/{id}','SlidesController@delete');
+        Route::get('/{item}','SlidesController@edit')->name('edit_slide');
+        Route::post('/{item}','SlidesController@update');
+    });
 });
 
 Auth::routes();
