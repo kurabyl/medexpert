@@ -93,6 +93,14 @@
             <textarea name="text" id="" cols="30" rows="10">{{$item->text}}</textarea>
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">Язык</label>
+            <select name="lang" >
+                <option value="ru">Русский</option>
+                <option value="kk">Казахский</option>
+                <option value="en">Английский</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">Картинка</label>
             <img src="{{  asset('staticpage/'.$item->image)}}" alt="" style="max-height: 200px;">
         </div>

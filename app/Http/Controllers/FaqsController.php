@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\StaticPage;
+use App\Faq;
 use Illuminate\Http\Request;
 
-class StaticPageController extends Controller
+class FaqsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,10 @@ class StaticPageController extends Controller
      */
     public function index()
     {
-        //
+        $items = Faq::all();
+        return view('front.faq',[
+            'items'=>$items
+        ]);
     }
 
     /**
@@ -41,26 +44,21 @@ class StaticPageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function show($slug,StaticPage $staticPage)
+    public function show(Faq $faq)
     {
-        $item = StaticPage::where('slug',$slug)->first();
-        if(empty($item))
-            return redirect()->to('/404');
-        return view('front.staticpage',[
-            'item' => $item,
-        ]);
+        //
     }
-   
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function edit(StaticPage $staticPage)
+    public function edit(Faq $faq)
     {
         //
     }
@@ -69,10 +67,10 @@ class StaticPageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StaticPage $staticPage)
+    public function update(Request $request, Faq $faq)
     {
         //
     }
@@ -80,10 +78,10 @@ class StaticPageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StaticPage $staticPage)
+    public function destroy(Faq $faq)
     {
         //
     }

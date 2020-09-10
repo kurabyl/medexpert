@@ -1,85 +1,17 @@
 <div class="about_partners">
 	<div class="title title_left">Полезные ссылки</div>
 	<div class="partner_list">
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
-		<div>
-			<a class="partner" href="javascript:;" target="_blank">
-				<div class="partner_img">
-					<img src="/img/inter_1.png">
-				</div>	
-				<span class="partner__heading">
-					Национальное бюро экспертиз Национальной академии наук Республики Армения					
-				</span>
-			</a>
-		</div>
+		@foreach(\App\Partner::where('id','>',0)->orderBy('created_at')->get() as $partner)
+            <div>
+				<a class="partner" href="{{$partner->link}}" target="_blank">
+					<div class="partner_img">
+						<img src="{{asset('partners/'.$partner->image)}}">
+					</div>	
+					<span class="partner__heading">
+						{{$partner->title}}				
+					</span>
+				</a>
+			</div>
+        @endforeach
 	</div>
 </div>

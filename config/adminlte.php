@@ -238,14 +238,29 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
 
+        [
+            'text' => 'Страницы',
+            'url'  => 'admin/staticpage',
+            'icon' => 'fas fa-fw fa-user',
+        ],
 
+        [
+            'text' => 'Партнеры',
+            'url'  => 'admin/partners',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'FAQ',
+            'url'  => 'admin/faqs',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         [
             'text'    => 'Деятельность',
 
             'submenu' => [
                 [
                     'text' => 'Вид экспертиза',
-                    'url'  => 'admin/experise',
+                    'url'  => 'admin/expertise',
                 ],
                 [
                     'text' => 'База НПА',
@@ -277,6 +292,8 @@ return [
                 ],
             ],
         ],
+
+
         [
             'text'    => 'Карта',
             'icon'    => 'fas fa-fw fa-share',
