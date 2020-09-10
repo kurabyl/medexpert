@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Team;
+
 use App\Http\Controllers\Controller;
+use App\Slide;
 use Illuminate\Http\Request;
 
-class TeamsController extends Controller
+class SlidesController extends Controller
 {
     public function __construct()
     {
@@ -13,8 +14,8 @@ class TeamsController extends Controller
     }
     public function index()
     {
-        $items = Team::all();
-        return view('admin.team.index',[
+        $items = Slide::all();
+        return view('admin.slide.index',[
             'items'=>$items
         ]);
     }
@@ -26,8 +27,8 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        $item = new Team();
-        return view('admin.team.create',[
+        $item = new Slide();
+        return view('admin.slide.create',[
             'item'=>$item
         ]);
     }
@@ -40,13 +41,9 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        $item = new Team;
-        $item->name = $request->title;
-        $item->position = $request->position;
-        $item->text = $request->text;
+        $item = new Slide;
         $item->type_id = $request->type_id;
-        $item->image = $this->uploadPublic($request,'teams') ?? '';
-        $item->lang = $request->lang;
+        $item->image = $this->uploadPublic($request,'slides') ?? '';
         if ($item ->save()) {
             return redirect()->back()->with('success','Успешно добавлено');
         }
@@ -56,32 +53,28 @@ class TeamsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Team  $team
+     * @param  \App\Slide  $slide
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
+    public function show(Slide $slide)
     {
         //
     }
 
-    public function edit($id,Team $team)
+    public function edit($id,Slide $slide)
     {
-        $item = Team::find($id);
-        return view('admin.team.create',[
+        $item = Slide::find($id);
+        return view('admin.slide.create',[
             'item'=>$item
         ]);
     }
 
-    public function update($id,Request $request, Team $team)
+    public function update($id,Request $request, Slide $slide)
     {
-        $item = Team::find($id);
-        $item->name = $request->name;
-        $item->position = $request->position;
-        $item->text = $request->text;
+        $item = Slide::find($id);
         $item->type_id = $request->type_id;
-        $item->lang = $request->lang;
         if($request->has('file')) {
-           $item->image = $this->upload($request,'teams') ?? $request->old_image;
+           $item->image = $this->upload($request,'slides') ?? $request->old_image;
         }
 
         if ($item->save()) {
@@ -93,12 +86,12 @@ class TeamsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Team  $team
+     * @param  \App\Slide  $slide
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
     {   
-        $item = Team::find($id);
+        $item = Slide::find($id);
        
         if ( $item->delete()) {
             return redirect()->back()->with('success','Успешно удалено');

@@ -1,45 +1,17 @@
 <div class="page_sidebar">
-		<div class="title">Новости</div>
-		<div class="news">
-			<div class="news_item">
-				<a class="news_img" href="javascript:;">
-					<img src="img/news_1.jpg" alt="">
+	<div class="title">Новости</div>
+	<div class="news">
+		@foreach(\App\News::where('id','>',0)->orderBy('created_at')->get() as $news)
+            <div class="news_item">
+				<a class="news_img" href="/news/view/{{ $news->id }}">
+					<img src="{{asset('news/'.$news->image)}}" alt="">
 				</a>
 				<div class="about_news">
-					<div class="news_date">30.07.2020</div>
-					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
-					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
+					<div class="news_date">{{date('d.m.Y',strtotime($news->created_at ))}}/div>
+					<a class="news_name" href="/news/view/{{ $news->id }}">{{ $news->title }}</a>
+					<div class="news_text text_item">{!! $news->text !!}</div>
 				</div>
 			</div>
-			<div class="news_item">
-				<a class="news_img" href="javascript:;">
-					<img src="img/news_2.jpg" alt="">
-				</a>
-				<div class="about_news">
-					<div class="news_date">30.07.2020</div>
-					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
-					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
-				</div>
-			</div>
-			<div class="news_item">
-				<a class="news_img" href="javascript:;">
-					<img src="img/news_3.jpg" alt="">
-				</a>
-				<div class="about_news">
-					<div class="news_date">30.07.2020</div>
-					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
-					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
-				</div>
-			</div>
-			<div class="news_item">
-				<a class="news_img" href="javascript:;">
-					<img src="img/news_4.jpg" alt="">
-				</a>
-				<div class="about_news">
-					<div class="news_date">30.07.2020</div>
-					<a class="news_name" href="javascript:;">Пример новости судмедэкспертизы</a>
-					<div class="news_text text_item">Также как синтетическое тестирование напрямую зависит от благоприятных перспектив.</div>
-				</div>
-			</div>
-		</div>
+        @endforeach
 	</div>
+</div>
