@@ -52,6 +52,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('goszakup','Admin\ActivityController@goszakup');
     Route::post('addUploadData','Admin\ActivityController@addUploadData')->name('addUploadData');
+    Route::post('updateUploadData','Admin\ActivityController@updateUploadData')->name('updateUploadData');
 
     Route::post('uploadWorkPlan','Admin\ActivityController@postWorkPlan')->name('uploadWorkPlan');
     Route::get('news','Admin\NewsController@list');
@@ -93,6 +94,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/{item}','StaticPageController@edit')->name('edit_staticpage');
         Route::post('/{item}','StaticPageController@update');
     });
+
+
 });
 
 Auth::routes();

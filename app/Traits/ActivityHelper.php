@@ -70,7 +70,66 @@ trait ActivityHelper
         }
         return false;
     }
+    public function updateActivityHandle($request)
+    {
+        switch ($request->type)
+        {
+            case 1:
+                $add = NpaProject::find($request->id);
+                $add->title = $request->title;
+                if ($request->hasFile('file')) {
+                    $add->files = $this->uploadStorage($request,'npaproject') ?? '';
+                }
+                if ($add->save()) {
+                    return true;
+                }
+                break;
+            case 2:
+                $add =  ScienceActivity::find($request->id);
+                $add->title = $request->title;
+                $add->file_more = $request->file_more;
+                $add->files = $this->uploadStorage($request,'activies') ?? '';
+                if ($add->save()) {
+                    return true;
+                }
+                break;
+            case 3:
+                $add =  Analytics::find($request->id);
+                $add->title = $request->title;
+                $add->files = $this->uploadStorage($request,'analytics') ?? '';
+                if ($add->save()) {
+                    return true;
+                }
+                break;
+            case 4:
+                $add =  GosZakup::find($request->id);
+                $add->title = $request->title;
+                $add->link = $request->link;
+                if ($add->save()) {
+                    return true;
+                }
+                break;
 
+            case 5:
+                $add =  Expertise::find($request->id);
+                $add->title = $request->title;
+                if ($add->save()) {
+                    return true;
+                }
+                break;
+            case 6:
+                $add =  Expertise::find($request->id);
+                $add->title = $request->title;
+                $add->parent_id = $request->id;
+                $add->text = $request->text;
+                if ($add->save()) {
+                    return true;
+                }
+                break;
+
+        }
+        return false;
+    }
     protected function uploadStorage($request,$folderName)
     {
         if ($request->hasFile('file')) {

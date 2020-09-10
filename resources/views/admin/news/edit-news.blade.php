@@ -9,7 +9,7 @@
 @section('content')
     @include('messages')
 
-<form action="{{ route('postUpdateNews', $item->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('postActivity', $item->id) }}" method="post" enctype="multipart/form-data">
     <div class="modal-body">
 
         @csrf

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Пост экспертиз</h1>
+    <h1>Пост гос услуги</h1>
 @stop
 
 @section('content')
@@ -16,16 +16,25 @@
         <tr>
             <th>#</th>
             <th>Название</th>
-            <th>Описание</th>
+            <th>Данные</th>
+            <th>Тип</th>
             <th>Действие</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($expertise as $item)
+        @foreach($list as $item)
             <tr>
                 <td>{{ $loop->index +1 }}</td>
                 <td>{{ $item->title }}</td>
-                <td>{!! $item->text !!}  </td>
+                <td>{{ $item->data }}  </td>
+                <td>
+                    @if($item->type === 1)
+                        Файл
+                    @else
+                        Ссылка
+                    @endif
+                </td>
+
                 <td>
                     <a href="{{ url('planwork/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
                     <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>

@@ -34,18 +34,21 @@ class ActivityController extends Controller
     public function expertise()
     {
         $expertise = Expertise::parentId(0)->get();
+        $expertiseOne = Expertise::find(\request()->post_id ?? 0);
 
         return view('admin.activity.expertise',[
-            'expertise'=>$expertise
+            'expertise'=>$expertise,
+            'find'=>$expertiseOne
         ]);
     }
 
     public function viewExpertise($id)
     {
         $expertise = Expertise::parentId($id)->get();
-
+        $expertiseOne = Expertise::find(\request()->post_id ?? 0);
         return view('admin.activity.expertiseposts',[
-            'expertise'=>$expertise
+            'expertise'=>$expertise,
+            'find'=>$expertiseOne
         ]);
     }
 
@@ -130,4 +133,5 @@ class ActivityController extends Controller
         }
         return redirect()->back()->with('error','Повторите еще раз');
     }
+
 }

@@ -27,8 +27,8 @@
                 <td>{{ $item->title }}</td>
                 <td>{!! $item->text !!}  </td>
                 <td>
-                    <a href="{{ url('planwork/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/view/expertise/'.$item->id.'?post_id#editModal') }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('admin/view/expertise/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -76,10 +76,38 @@
             </div>
         </div>
     </div>
+
+    <div id="editModal" class="modalDialog">
+        <div>
+            <a href="#close" title="Закрыть" class="close">X</a>
+            <h4>Редактировать</h4>
+            <form action="{{ route('updateUploadData') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    @csrf
+                    <input type="hidden" name="type" value="5">
+                    <input type="hidden" name="id" value="{{ request()->post_id }}">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Название</label>
+                        <input type="text" name="title" class="form-control" value="{{ $find->title ?? '' }}">
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn btn-secondary" >Закрыть</a>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('css/modal.css?cahc='.time()) }}">
 @stop
 
 @section('js')

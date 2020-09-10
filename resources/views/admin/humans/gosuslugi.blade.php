@@ -17,6 +17,7 @@
             <th>#</th>
             <th>Название</th>
             <th>Записи</th>
+            <th>Тип данные</th>
             <th>Действие</th>
         </tr>
         </thead>
@@ -25,7 +26,14 @@
             <tr>
                 <td>{{ $loop->index +1 }}</td>
                 <td><a href="{{ url('admin/view/expertise/'.$item->id) }}">{{ $item->title }}</a></td>
-                <td>{{ $item->expertiseList($item->id)->count() }}</td>
+                <td>{{ $item->list($item->id)->count() }}</td>
+                <td>
+                    @if($item->type === 1)
+                        Файл
+                    @else
+                        Ссылка
+                    @endif
+                </td>
                 <td>
                     <a href="{{ url('planwork/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
                     <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
@@ -46,19 +54,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('addUploadData') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('addGosUslugi') }}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
 
                         @csrf
-                    <input type="hidden" name="type" value="5">
+                    <input type="hidden" name="type" value="1">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Название</label>
                             <input type="text" name="title" class="form-control">
                         </div>
-
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
