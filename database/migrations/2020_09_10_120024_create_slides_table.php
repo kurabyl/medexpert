@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateObjDetailExpertiseTypeTable extends Migration
+class CreateSlidesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateObjDetailExpertiseTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('obj_detail_expertise_type', function (Blueprint $table) {
+        Schema::create('slides', function (Blueprint $table) {
             $table->id();
-            $table->integer('objectdetail_id');
-            $table->binary('type_expertise');
-            $table->binary('type_isled');
+            $table->text('image')->nullable();
+            $table->integer('type_id');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateObjDetailExpertiseTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('obj_detail_expertise_type');
+        Schema::dropIfExists('slides');
     }
 }

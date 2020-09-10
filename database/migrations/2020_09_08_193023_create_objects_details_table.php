@@ -16,10 +16,9 @@ class CreateObjectsDetailsTable extends Migration
         Schema::create('objects_details', function (Blueprint $table) {
             $table->id();
             $table->integer('object_id');
-            $table->string('position');
-            $table->string('fio');
-            $table->string('contacts');
-            $table->string('date_priem');
+            $table->string('first_data');
+            $table->string('second_data');
+        
             $table->timestamps();
         });
     }

@@ -36,8 +36,8 @@
                 </td>
 
                 <td>
-                    <a href="{{ url('planwork/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/gosservices/'.request()->id.'/?post_id='.$item->id.'#editModal') }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('admin/gosservices/remove/'.$item->id.'/2') }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -55,12 +55,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('addUploadData') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('addGosUslugi') }}" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
 
                         @csrf
 
-                    <input type="hidden" name="type" value="6">
+                    <input type="hidden" name="type" value="2">
                     <input type="hidden" name="id" value="{{ request()->id }}">
 
                     <div class="form-group">
@@ -68,11 +68,26 @@
                             <input type="text" name="title" class="form-control">
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Текст</label>
-                            <textarea name="text" class="form-control"></textarea>
-                        </div>
 
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Тип</label>
+                        <select name="type_" id="" class="form-control" >
+                            <option value="">Не выбран</option>
+                            <option value="1">Файл</option>
+                            <option value="2">Ссылка</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group" id="file_s" >
+                        <label for="exampleInputEmail1">Загрузить файл</label>
+                        <input type="file" name="file" class="form-control">
+                    </div>
+
+                    <div class="form-group" id="link" >
+                        <label for="exampleInputEmail1">Ссылка</label>
+                        <input type="text" name="link" class="form-control">
+                    </div>
 
 
 
@@ -85,10 +100,58 @@
             </div>
         </div>
     </div>
+
+    <div id="editModal" class="modalDialog" >
+        <div>
+            <a href="#close" title="Закрыть" class="close">X</a>
+            <h4>Редактировать</h4>
+            @if(request()->post_id)
+            <form action="{{ route('addGosUslugi') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    @csrf
+                    <input type="hidden" name="type" value="4">
+                    <input type="hidden" name="id" value="{{ request()->post_id }}">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Название</label>
+                        <input type="text" name="title" class="form-control" value="{{ $find->title ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Тип</label>
+                        <select name="type_" id="" class="form-control" >
+                            <option value="" >Не выбран</option>
+                            <option value="1" @if($find->type == 1) selected @endif>Файл</option>
+                            <option value="2" @if($find->type  == 2) selected @endif>Ссылка</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"  @if($find->type  != 1) style="display: none;" @endif>
+                        <label for="exampleInputEmail1">Загрузить файл</label>
+                        <input type="file" name="file" class="form-control">
+                    </div>
+
+                    <div class="form-group" @if($find->type != 2) style="display: none;" @endif >
+                        <label for="exampleInputEmail1">Ссылка</label>
+                        <input type="text" name="link" class="form-control" value="{{ $find->data ?? 0 }}">
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn btn-secondary" >Закрыть</a>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+           @endif
+        </div>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('css/modal.css?cahc='.time()) }}">
+
 @stop
 
 @section('js')
@@ -103,5 +166,19 @@
     <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'text' );
+    </script>
+
+    <script>
+        $('#file_s').hide();
+        $('#link').hide();
+        $('select').on('change', function () {
+            if(this.value == 1) {
+                $('#file_s').show();
+                $('#link').hide();
+            }else {
+                $('#link').show();
+                $('#file_s').hide();
+            }
+        });
     </script>
 @stop

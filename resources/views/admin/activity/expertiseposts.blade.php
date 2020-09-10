@@ -28,7 +28,7 @@
                 <td>{!! $item->text !!}  </td>
                 <td>
                     <a href="{{ url('admin/view/expertise/'.request()->id.'?post_id='.$item->id.'#editModal') }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('admin/view/expertise/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/remove/activities/'.$item->id.'/6') }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach

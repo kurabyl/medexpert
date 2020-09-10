@@ -38,9 +38,7 @@ Route::get('/news/view/{id}', 'NewsController@view');
 Route::get('/cert_standart', function () {
     return view('front.cert_standart');
 });
-Route::get('/gos_services', function () {
-    return view('front.gos_services');
-});
+Route::get('/gos_services', 'ActivityController@gosUslugi');
 Route::get('/staticpage/{slug}','StaticPageController@show');
 Route::get('/vacancy', 'VacancyController@index');
 Route::get('/faqs', 'FaqsController@index');
@@ -50,6 +48,8 @@ Route::prefix('admin')->group(function () {
     Route::get('expertise','Admin\ActivityController@expertise');
     Route::get('view/expertise/{id}','Admin\ActivityController@viewExpertise');
     Route::get('planwork','Admin\ActivityController@planWork');
+    Route::get('planwork/remove/{id}','Admin\ActivityController@planWorkRemove');
+    Route::get('remove/activities/{id}/{type}','Admin\ActivityController@removeHandler');
     Route::get('projectnpa','Admin\ActivityController@npaProjects');
     Route::get('activites','Admin\ActivityController@activities');
     Route::get('statics','Admin\ActivityController@statics');
@@ -79,6 +79,13 @@ Route::prefix('admin')->group(function () {
     Route::get('map/regions','Admin\MapController@regions');
     Route::get('map/cities','Admin\MapController@cities');
     Route::get('map/objects','Admin\MapController@objects');
+
+    Route::get('gosservices/','Admin\ActivityController@gosServiceList');
+    Route::get('gosservices/{id}','Admin\ActivityController@viewList');
+    Route::post('gosservices/add','Admin\ActivityController@addGosUslugi')->name('addGosUslugi');
+
+    Route::get('gosservices/remove/{id}/{type}','Admin\ActivityController@removeGosService');
+
 
     /* ---- Vacancies ------- */
      //Route::get('vacancy','Admin\VacancyController@index');
@@ -115,6 +122,25 @@ Route::prefix('admin')->group(function () {
         Route::get('/{item}','FaqsController@edit')->name('edit_faq');
         Route::post('/{item}','FaqsController@update');
     });
+    Route::group(["namespace" => "Admin","prefix" => 'teams'],function(){
+        Route::get('/','TeamsController@index');
+        Route::get('/create','TeamsController@create')->name('create_team');
+        Route::post('/create','TeamsController@store')->name('store_team');
+        Route::get('/delete/{id}','TeamsController@delete');
+        Route::get('/{item}','TeamsController@edit')->name('edit_team');
+        Route::post('/{item}','TeamsController@update');
+    });
+    Route::group(["namespace" => "Admin","prefix" => 'slides'],function(){
+        Route::get('/','SlidesController@index');
+        Route::get('/create','SlidesController@create')->name('create_slide');
+        Route::post('/create','SlidesController@store')->name('store_slide');
+        Route::get('/delete/{id}','SlidesController@delete');
+        Route::get('/{item}','SlidesController@edit')->name('edit_slide');
+        Route::post('/{item}','SlidesController@update');
+    });
+
+
+
 
 });
 

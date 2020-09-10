@@ -250,8 +250,23 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Государственные услуги',
+            'url'  => 'admin/gosservices',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'FAQ',
             'url'  => 'admin/faqs',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Команда',
+            'url'  => 'admin/teams',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Сертификат и слайд',
+            'url'  => 'admin/slides',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

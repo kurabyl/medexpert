@@ -9,6 +9,7 @@ use App\Expertise;
 use App\GosZakup;
 use App\NpaProject;
 use App\ScienceActivity;
+use Illuminate\Support\Facades\File;
 
 trait ActivityHelper
 {
@@ -127,6 +128,60 @@ trait ActivityHelper
                 $add->parent_id = $request->id;
                 $add->text = $request->text_;
                 if ($add->save()) {
+                    return true;
+                }
+                break;
+
+        }
+        return false;
+    }
+
+    public function removeHandle($request)
+    {
+        switch ($request['type'])
+        {
+            case 1:
+                $add = NpaProject::find($request['id']);
+                if ($add) {
+                    $add->files ? File::delete(storage_path('app/'.$add->files)) : false;
+                }
+                if ($add->delete()) {
+                    return true;
+                }
+                break;
+            case 2:
+                $add =  ScienceActivity::find($request['id']);
+                if ($add) {
+                    $add->files ? File::delete(storage_path('app/'.$add->files)) : false;
+                }
+                if ($add->delete()) {
+                    return true;
+                }
+                break;
+            case 3:
+                $add =  Analytics::find($request['id']);
+                if ($add) {
+                    $add->files ? File::delete(storage_path('app/'.$add->files)) : false;
+                }
+                if ($add->delete()) {
+                    return true;
+                }
+                break;
+            case 4:
+                $add =  GosZakup::find($request['id']);
+                if ($add->delete()) {
+                    return true;
+                }
+                break;
+
+            case 5:
+                $add =  Expertise::find($request['id']);
+                if ($add->delete()) {
+                    return true;
+                }
+            case 6:
+                $add =  Expertise::find($request['id']);
+                if ($add->delete()) {
                     return true;
                 }
                 break;

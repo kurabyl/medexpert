@@ -72,9 +72,9 @@
                                 <a class="menu_link" href="javascript:;">О нас</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="/about">История центра</a>
-                                        <a class="sub_link" href="/ustav">Устав</a>
-                                        <a class="sub_link" href="/structure">Структура</a>
+                                        <a class="sub_link" href="/staticpage/about">История центра</a>
+                                        <a class="sub_link" href="/staticpage/ustav">Устав</a>
+                                        <a class="sub_link" href="/staticpage/struktura">Структура</a>
                                     </div>
                                 </div>
                             </li>
@@ -87,7 +87,7 @@
                                         <a class="sub_link" href="/npa_base">База НПА</a>
                                         <a class="sub_link" href="/npa_project">Проекты НПА</a>
                                         <a class="sub_link" href="/science_activity">Научная деятельность</a>
-                                        <a class="sub_link" href="/cert_standart">Аккредитация Институтов</a>
+                                        <a class="sub_link" href="/staticpage/akkreditaciya-institutov">Аккредитация Институтов</a>
                                         <a class="sub_link" href="/statistic">Аналитика и статистика</a>
                                         <a class="sub_link" href="/goszakup">Государственные закупки</a>
                                         <a class="sub_link" href="/vacancy">Вакансии</a>
@@ -98,16 +98,17 @@
                                 <a class="menu_link" href="javascript:;">Гражданам</a>
                                 <div class="sub_menu">
                                     <div class="sub_menu_list">
-                                        <a class="sub_link" href="priem_grazhdan">График приема граждан</a>
-                                        <a class="sub_link" href="paid_services">Платные услуги</a>
+                                        <a class="sub_link" href="/staticpage/grafik-priem-grazhdan-fizicheskih-i-yuridicheskih-lic-rukovodstvom-centra-sudebnyh-ekspertiz-ministerstva-yusticii-rk">График приема граждан</a>
+                                        <a class="sub_link" href="/staticpage/prejskurant-cen-platnyh-uslug-centra-sudebnyh-ekspertiz">Платные услуги</a>
                                         <a class="sub_link" href="gos_services">Государственные услуги</a>
+                                        <a class="sub_link"  href="/faqs">Часто задаваемые вопросы</a>
                                     </div>
                                 </div>
                             </li>
-                            <li><a class="menu_link" href="world_bank">Проект Всемирного Банка</a></li>
-                            <li><a class="menu_link" href="international_coop">Международное сотрудничество</a></li>
-                            <li><a class="menu_link" href="news">Новости</a></li>
-                            <li><a class="menu_link" href="contacts">Контакты</a></li>
+                            <li><a class="menu_link" href="/staticpage/proekt-vsemirnogo-banka">Проект Всемирного Банка</a></li>
+                            <li><a class="menu_link" href="/staticpage/mezhdunarodnoe-sotrudnichestvo">Международное сотрудничество</a></li>
+                            <li><a class="menu_link" href="/news-all">Новости</a></li>
+                            <li><a class="menu_link" href="/staticpage/kontakty">Контакты</a></li>
                         </ul>
                     </div>
                 </div>

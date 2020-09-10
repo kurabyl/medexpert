@@ -30,7 +30,7 @@
                 <td>{{ $item->file_more }}</td>
                 <td>
                     <a href="{{ url('admin/activites/?post_id='.$item->id.'#editModal') }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('planwork/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/remove/activities/'.$item->id.'/2') }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach

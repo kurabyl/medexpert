@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Expertise;
+use App\GosService;
 use App\NpaBase;
 use App\NpaProject;
 use App\ScienceActivity;
@@ -66,6 +67,15 @@ class ActivityController extends Controller
 
         return view('front.goszakup',[
             'goszakup'=>$goszakup
+        ]);
+    }
+
+    public function gosUslugi()
+    {
+        $gosservices = GosService::parentId(0)->get();
+
+        return view('front.gos_services',[
+            'gosservices'=>$gosservices
         ]);
     }
     public function analytics()

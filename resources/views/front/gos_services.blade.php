@@ -21,44 +21,28 @@
 					<img src="img/history_img.jpg" alt="">
 				</div> -->
 				<div class="gos-uslugi">
+                    @if($gosservices->count() > 0)
+                        @foreach($gosservices as $item)
 					<div class="gos-uslugi__item">
 						<div class="title small_title">Аккредитация Институтов</div>
 						<div class="gos-list">
 							<div class="gos-list_item">
-								<div class="gos-list__heading">Присвоение квалификации судебного эксперта</div>
+								<div class="gos-list__heading">{{ $item->title }}</div>
+
 					            <ul class="gos-list__content">
+                                    @foreach($item->list($item->id) as $items)
 									<li>
-		                           	<a class="npa_list_link" href="http://adilet.zan.kz/kaz/docs/V1700015031" target="_blank">Біліктілік емтиханын өткізу қағидалары</a>
+		                           	<a class="npa_list_link" href="@if($items->type == 1) {{Storage::url($items->data) }} @else {{ $items->data }}@endif" target="_blank" >{{ $items->title }}</a>
 		                         	</li>
-		                         	<li>
-		                           	<a class="npa_list_link" href="/files/gosservices/kval/kval_sheme_kaz.pptx" download>Мемлекеттік қызметті алу сызбасы</a>
-		                         	</li>
-		                         	<li>
-		                           	<a class="npa_list_link" href="/files/gosservices/kval/kval_form_kaz.docx" download>Өтініш нысаны</a>
-		                         	</li>
-		                        </ul>
+                                    @endforeach
+                                </ul>
+
 						    </div>
 						</div>
 					</div>
-					<div class="gos-uslugi__item">
-						<div class="title small_title">Аккредитация Институтов</div>
-						<div class="gos-list">
-							<div class="gos-list_item">
-								<div class="gos-list__heading">Присвоение квалификации судебного эксперта</div>
-					            <ul class="gos-list__content">
-									<li>
-		                           	<a class="npa_list_link" href="http://adilet.zan.kz/kaz/docs/V1700015031" target="_blank">Біліктілік емтиханын өткізу қағидалары</a>
-		                         	</li>
-		                         	<li>
-		                           	<a class="npa_list_link" href="/files/gosservices/kval/kval_sheme_kaz.pptx" download>Мемлекеттік қызметті алу сызбасы</a>
-		                         	</li>
-		                         	<li>
-		                           	<a class="npa_list_link" href="/files/gosservices/kval/kval_form_kaz.docx" download>Өтініш нысаны</a>
-		                         	</li>
-		                        </ul>
-						    </div>
-						</div>
-					</div>
+                        @endforeach
+                        @endif
+
 				</div>
 				@include('include.partner')
 			</div>

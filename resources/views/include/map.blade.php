@@ -2,8 +2,8 @@
   <div class="container">
     <div class="title"><?=__('Территориальные подразделения')?></div>
     <div class="map_list">
-        @if($city->count() > 0)
-        @foreach($city as $item)
+        @if(config('map.list')->count() > 0)
+        @foreach(config('map.list') as $item)
         <div class="map_item">
           <div class="map_icon">
             <svg width="24" height="31" viewBox="0 0 24 31" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,8 +108,8 @@
 
       <div class="map_info">
         <div class="map_info_close"></div>
-        @if($city->count() > 0)
-            @foreach($city as $item)
+        @if(config('map.list')->count() > 0)
+            @foreach(config('map.list') as $item)
                 <div class="map_info_item" id="{{ $item->city->region['keys'] }}__info">
                     <div class="map_info_content">
                       <div class="info_sidebar">
@@ -117,7 +117,7 @@
                                 <div class="info_sidebar_item">{{ $cities->name }}</div>
                           @endforeach
                       </div>
-                        @foreach($city as $details)
+                        @foreach(config('map.list') as $details)
                       <div class="info_content">
 
                         <div class="info_content_item">

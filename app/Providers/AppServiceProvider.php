@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Map\CityObject;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $city = CityObject::all();
+        config(['map.list' => $city]);
     }
 }
