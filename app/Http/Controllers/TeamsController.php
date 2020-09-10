@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\StaticPage;
+use App\Team;
 use Illuminate\Http\Request;
 
-class StaticPageController extends Controller
+class TeamsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,26 +41,21 @@ class StaticPageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show($slug,StaticPage $staticPage)
+    public function show(Team $team)
     {
-        $item = StaticPage::where('slug',$slug)->first();
-        if(empty($item))
-            return redirect()->to('/404');
-        return view('front.staticpage',[
-            'item' => $item,
-        ]);
+        //
     }
-   
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(StaticPage $staticPage)
+    public function edit(Team $team)
     {
         //
     }
@@ -69,10 +64,10 @@ class StaticPageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StaticPage $staticPage)
+    public function update(Request $request, Team $team)
     {
         //
     }
@@ -80,10 +75,10 @@ class StaticPageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StaticPage $staticPage)
+    public function destroy(Team $team)
     {
         //
     }

@@ -1,32 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\admin;
-
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RequestForm;
-use App\StaticPage;
+use App\Partner;
 use Illuminate\Http\Request;
-use App\Traits\Uploader;
-use Illuminate\Support\Facades\File;
 
-class StaticPageController extends Controller
+class PartnersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
     public function index()
     {
-        $staticpage = StaticPage::all();
-        return view('admin.staticpage.index',[
-            'staticpage'=>$staticpage
+        $items = Partner::all();
+        return view('admin.partner.index',[
+            'items'=>$items
         ]);
-
     }
 
     /**
@@ -36,9 +32,9 @@ class StaticPageController extends Controller
      */
     public function create()
     {
-        $staticpage = new StaticPage();
-        return view('admin.staticpage.create',[
-            'staticpage'=>$staticpage
+        $item = new Partner();
+        return view('admin.partner.create',[
+            'item'=>$item
         ]);
     }
 
@@ -48,18 +44,14 @@ class StaticPageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestForm $request)
+    public function store(Request $request)
     {
-        //
-
-        $staticpage = new StaticPage;
-        $staticpage->title = $request->title;
-        $staticpage->slug = $request->slug;
-        $staticpage->type_id = $request->type_id;
-        $staticpage->image = $this->uploadPublic($request,'staticpage') ?? '';
-        $staticpage->text = $request->text;
-         $staticpage->lang = $request->lang;
-        if ($staticpage->save()) {
+        $item = new Partner;
+        $item->title = $request->title;
+        $item->link = $request->link;
+        $item->image = $this->uploadPublic($request,'partners') ?? '';
+        $item->lang = $request->lang;
+        if ($item ->save()) {
             return redirect()->back()->with('success','Успешно добавлено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
@@ -68,22 +60,25 @@ class StaticPageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-  
+    public function show(Partner $partner)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function edit(StaticPage $staticPage,$id)
+    public function edit($id,Partner $partner)
     {
-        $item = StaticPage::find($id);
-        return view('admin.staticpage.edit',[
-            'item' => $item,
+        $item = Partner::find($id);
+        return view('admin.partner.create',[
+            'item'=>$item
         ]);
     }
 
@@ -91,22 +86,20 @@ class StaticPageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function update($id,RequestForm $request)
+    public function update($id,Request $request, Partner $partner)
     {
-        $staticpage = StaticPage::find($id);
-        $staticpage->title = $request->title;
-        $staticpage->slug = $request->slug;
-         $staticpage->type_id = $request->type_id;
-          $staticpage->lang = $request->lang;
+        $item = Partner::find($id);
+        $item->title = $request->title;
+        $item->link = $request->link;
+        $item->lang = $request->lang;
         if($request->has('file')) {
-           $staticpage->image = $this->upload($request,'staticpage') ?? $request->old_image;
+           $item->image = $this->upload($request,'partners') ?? $request->old_image;
         }
-        $staticpage->text = $request->text;
 
-        if ($staticpage->save()) {
+        if ($item->save()) {
             return redirect()->back()->with('success','Успешно добавлено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
@@ -115,12 +108,12 @@ class StaticPageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\StaticPage  $staticPage
+     * @param  \App\Partner  $partner
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
     {   
-        $item = StaticPage::find($id);
+        $item = Partner::find($id);
        
         if ( $item->delete()) {
             return redirect()->back()->with('success','Успешно удалено');
