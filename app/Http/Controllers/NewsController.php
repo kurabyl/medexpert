@@ -20,7 +20,7 @@ class NewsController extends Controller
     }
     public function index()
     {
-        $news = News::paginate(10);
+        $news = News::where('lang',app()->getLocale())->paginate(10);
 
         return view('front.news',[
             'news'=>$news
@@ -69,5 +69,5 @@ class NewsController extends Controller
         $news->delete();
 
     }
-    
+
 }

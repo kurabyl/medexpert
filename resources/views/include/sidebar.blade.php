@@ -1,7 +1,7 @@
 <div class="page_sidebar">
 	<div class="title">Новости</div>
 	<div class="news">
-		@foreach(\App\News::where('id','>',0)->orderBy('created_at')->get() as $news)
+		@foreach(\App\News::where('id','>',0)->where('lang',app()->getLocale())->orderBy('created_at')->get() as $news)
             <div class="news_item">
 				<a class="news_img" href="/news/view/{{ $news->id }}">
 					<img src="{{asset('news/'.$news->image)}}" alt="">
