@@ -66,7 +66,14 @@
                             @endif
                         </div>
 
-
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Язык</label>
+                            <select name="lang" >
+                                <option value="ru">Русский</option>
+                                <option value="kk">Казахский</option>
+                                <option value="en">Английский</option>
+                            </select>
+                        </div>
 
 
                     </div>
@@ -103,6 +110,14 @@
                             </select>
                         @endif
                     </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Язык</label>
+                            <select name="lang" >
+                                <option value="ru" @if($find->lang == 'ru') selected @endif>Русский</option>
+                                <option value="kk" @if($find->lang == 'kk') selected @endif>Казахский</option>
+                                <option value="en" @if($find->lang == 'en') selected @endif>Английский</option>
+                            </select>
+                        </div>
                     @endif
 
 

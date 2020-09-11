@@ -26,6 +26,7 @@ trait MapHelper
             case 2:
                 $city = new City;
                 $city->name = $request->name;
+                $city->lang = $request->lang;
                 $city->region_id = $request->region_id;
                 if ($city->save()) {
                     return true;
@@ -34,6 +35,7 @@ trait MapHelper
             case 3:
                 $cityObject = new CityObject;
                 $cityObject->name = $request->name;
+                $cityObject->lang = $request->lang;
                 $cityObject->city_id = $request->city_id;
                 $cityObject->address = $request->address;
 
@@ -71,6 +73,7 @@ trait MapHelper
             case 2:
                 $city =  City::find($request->id);
                 $city->name = $request->name;
+                $city->lang = $request->lang;
                 $city->region_id = $request->region_id;
                 if ($city->save()) {
                     return true;
@@ -80,6 +83,7 @@ trait MapHelper
                 $cityObject = CityObject::find($request->id);
                 $cityObject->name = $request->name;
                 $cityObject->city_id = $request->city_id;
+                $cityObject->lang = $request->lang;
                 $cityObject->address = $request->address;
 
                 if ($cityObject->save()) {

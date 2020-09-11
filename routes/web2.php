@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/about', function () {
     return view('front.about');
 });
- Route::get('/admin', 'HomeController@index')->name('home');
 Route::get('/ustav', function () {
     return view('front.ustav');
 });
@@ -28,31 +27,30 @@ Route::get('/structure', function () {
 });
 Route::group(['middleware'=> 'lang_postfix'],function(){
 
-    Route::get('/expertise_type/{lang?}', 'ActivityController@expertise');
-    Route::get('/work_plan/{lang?}', 'ActivityController@planWork');
-    Route::get('/npa_base/{lang?}', 'ActivityController@npaBase');
-    Route::get('/mapview/{lang?}/{id}', 'MapsController@view');
-    Route::get('/npa_project/{lang?}', 'ActivityController@npaProjects');
-    Route::get('/science_activity/{lang?}', 'ActivityController@scienceActivity');
-    Route::get('/goszakup/{lang?}', 'ActivityController@gosZakup');
+    Route::get('/expertise_type', 'ActivityController@expertise');
+    Route::get('/work_plan', 'ActivityController@planWork');
+    Route::get('/npa_base', 'ActivityController@npaBase');
+    Route::get('/npa_project', 'ActivityController@npaProjects');
+    Route::get('/science_activity', 'ActivityController@scienceActivity');
+    Route::get('/goszakup', 'ActivityController@gosZakup');
     Route::get('/statistic/{lang?}', 'ActivityController@analytics');
     Route::get('/news-all/{lang?}', 'NewsController@index');
-    Route::get('/news/view/{lang?}/{id}', 'NewsController@view');
+    Route::get('/news/view/{id}', 'NewsController@view');
     Route::get('/cert_standart', function () {
         return view('front.cert_standart');
     });
-    Route::get('/gos_services{lang?}', 'ActivityController@gosUslugi');
+    Route::get('/gos_services', 'ActivityController@gosUslugi');
     Route::get('/staticpage/{slug}','StaticPageController@show');
-    Route::get('/vacancy{lang?}', 'VacancyController@index');
-    Route::get('/faqs{lang?}', 'FaqsController@index');
+    Route::get('/vacancy', 'VacancyController@index');
+    Route::get('/faqs', 'FaqsController@index');
     Route::get('/{lang?}', 'AboutController@map');
-
-
+   Route::get('/admin{lang}', 'HomeController@index')->name('home');
+    
 });
 
 Auth::routes();
 Route::prefix('admin')->group(function () {
-
+    
     Route::get('expertise','Admin\ActivityController@expertise');
     Route::get('view/expertise/{id}','Admin\ActivityController@viewExpertise');
     Route::get('planwork','Admin\ActivityController@planWork');
@@ -83,12 +81,10 @@ Route::prefix('admin')->group(function () {
     Route::post('addRegion','Admin\MapController@addRegion')->name('addRegion');
     Route::post('addCity','Admin\MapController@addCity')->name('addCity');
     Route::post('addObjects','Admin\MapController@addObjects')->name('addObjects');
-    Route::post('updateObjects','Admin\MapController@updateObjects')->name('updateObjects');
 
     Route::get('map/regions','Admin\MapController@regions');
     Route::get('map/cities','Admin\MapController@cities');
     Route::get('map/objects','Admin\MapController@objects');
-    Route::get('map/remove/{id}/{type}','Admin\MapController@removeAll');
     Route::get('map/add_detailsobjects','Admin\MapController@addDetailsObjects');
     Route::post('map/postObjectDetails','Admin\MapController@postObjectDetails')->name('postObjectDetails');
     Route::get('gosservices/','Admin\ActivityController@gosServiceList');
@@ -160,8 +156,8 @@ Auth::routes();
 
 Route::get('setlocale/{lang}', function ($lang) {
 
-
-
+ 
+    
     $referer = Redirect::back()->getTargetUrl(); //URL предыдущей страницы
     $parse_url = parse_url($referer, PHP_URL_PATH); //URI предыдущей страницы
     //разбиваем на массив по разделителю
@@ -177,7 +173,7 @@ Route::get('setlocale/{lang}', function ($lang) {
         unset($segments[1]);
     //Добавляем метку языка в URL (если выбран не язык по-умолчанию)
     //array_splice($segments, count($segments)-1, 0, $lang);
-
+    
     if($lang !== 'ru')
         $segments[] = $lang;
 
@@ -185,7 +181,7 @@ Route::get('setlocale/{lang}', function ($lang) {
 
     //формируем полный URL
     $url = Request::root().implode("/", $segments);
-
+    
     //если были еще GET-параметры - добавляем их
     if(parse_url($referer, PHP_URL_QUERY)){
         $url = $url.'?'. parse_url($referer, PHP_URL_QUERY);

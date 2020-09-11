@@ -23,4 +23,9 @@ class CityObject extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function details()
+    {
+        return $this->belongsTo(ObjectDetails::class,'id','object_id');
+    }
 }

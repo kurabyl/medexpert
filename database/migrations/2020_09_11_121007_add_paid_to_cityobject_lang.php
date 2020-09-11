@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateObjectsDetailsTable extends Migration
+class AddPaidToCityobjectLang extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateObjectsDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('objects_details', function (Blueprint $table) {
-            $table->id();
-            $table->integer('object_id');
-            $table->string('first_data');
-            $table->string('second_data');
-        
-            $table->timestamps();
+        Schema::table('city_objects', function (Blueprint $table) {
+            $table->string('lang')->default('ru');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateObjectsDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objects_details');
+        Schema::table('city_objects', function (Blueprint $table) {
+            //
+        });
     }
 }

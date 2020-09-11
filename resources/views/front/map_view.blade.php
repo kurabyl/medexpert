@@ -1,3 +1,5 @@
+@extends('layout.index')
+@section('content')
 <section class="page page_heading">
     <img class="page_heading_img" src="/img/page_heading.jpg" alt=""></img>
     <div class="container">
@@ -13,8 +15,8 @@
     <div class="container">
         <div class="title vakancy_title small_title">Руководство</div>
         <div class="table_block">
-            текст
-           
+            {!! $maps->details['first_data'] !!}
+
         </div>
     </div>
 </section>
@@ -23,7 +25,7 @@
     <div class="container">
         <div class="title vakancy_title small_title">Виды проводимых экспертиз и исследований</div>
         <div class="table_block">
-          текст
+            {!! $maps->details['second_data'] !!}
         </div>
     </div>
 </section>
@@ -36,3 +38,4 @@
         </div>
     </div>
 </section>
+@endsection

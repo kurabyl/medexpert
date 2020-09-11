@@ -126,7 +126,7 @@
                           <div class="map_info__body">
                             <div class="filial_list">
                                 {!! $details->address !!}
-                                <a class="filial_link filial_link_more" href="">Подробнее </a>
+                                <a class="filial_link filial_link_more" href="{{ url('mapview/'.$details->id) }}">Подробнее </a>
                             </div>
                           </div>
                         </div>
