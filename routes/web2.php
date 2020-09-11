@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/about', function () {
     return view('front.about');
 });
- Route::get('/admin', 'HomeController@index')->name('home');
 Route::get('/ustav', function () {
     return view('front.ustav');
 });
@@ -28,24 +27,24 @@ Route::get('/structure', function () {
 });
 Route::group(['middleware'=> 'lang_postfix'],function(){
 
-    Route::get('/expertise_type/{lang?}', 'ActivityController@expertise');
-    Route::get('/work_plan/{lang?}', 'ActivityController@planWork');
-    Route::get('/npa_base/{lang?}', 'ActivityController@npaBase');
-    Route::get('/npa_project/{lang?}', 'ActivityController@npaProjects');
-    Route::get('/science_activity/{lang?}', 'ActivityController@scienceActivity');
-    Route::get('/goszakup/{lang?}', 'ActivityController@gosZakup');
+    Route::get('/expertise_type', 'ActivityController@expertise');
+    Route::get('/work_plan', 'ActivityController@planWork');
+    Route::get('/npa_base', 'ActivityController@npaBase');
+    Route::get('/npa_project', 'ActivityController@npaProjects');
+    Route::get('/science_activity', 'ActivityController@scienceActivity');
+    Route::get('/goszakup', 'ActivityController@gosZakup');
     Route::get('/statistic/{lang?}', 'ActivityController@analytics');
     Route::get('/news-all/{lang?}', 'NewsController@index');
-    Route::get('/news/view/{lang?}/{id}', 'NewsController@view');
+    Route::get('/news/view/{id}', 'NewsController@view');
     Route::get('/cert_standart', function () {
         return view('front.cert_standart');
     });
-    Route::get('/gos_services{lang?}', 'ActivityController@gosUslugi');
+    Route::get('/gos_services', 'ActivityController@gosUslugi');
     Route::get('/staticpage/{slug}','StaticPageController@show');
-    Route::get('/vacancy{lang?}', 'VacancyController@index');
-    Route::get('/faqs{lang?}', 'FaqsController@index');
+    Route::get('/vacancy', 'VacancyController@index');
+    Route::get('/faqs', 'FaqsController@index');
     Route::get('/{lang?}', 'AboutController@map');
-  
+   Route::get('/admin{lang}', 'HomeController@index')->name('home');
     
 });
 

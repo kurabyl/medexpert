@@ -18,12 +18,13 @@ class NewsController extends Controller
     {
         $news = News::paginate(PAGE);
     }
-    public function index()
-    {
+    public function index($lang = null)
+    {   
         $news = News::where('lang',app()->getLocale())->paginate(10);
 
         return view('front.news',[
-            'news'=>$news
+            'news'=>$news,
+             'lang' =>$lang,
         ]);
     }
     public function view($id)
