@@ -26,13 +26,15 @@
             <tr>
                 <td>{{ $loop->index +1 }}</td>
                 <td>
-
-                    {{ $item->name }}</td>
+                    <a href="{{ url('admin/map/add_detailsobjects?post_id='.$item->id) }}">
+                        {{ $item->name }}
+                    </a>
+                    </td>
                 <td> {{ $item->city['name'] }}</td>
                 <td>{{ $item->address }}</td>
                 <td>
-                    <a href="{{ url('npabase/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('admin/npabase/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/map/objects/?post_id='.$item->id.'#editModal') }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('admin/map/remove/'.$item->id.'/2') }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -86,10 +88,53 @@
             </div>
         </div>
     </div>
+    <div id="editModal" class="modalDialog" >
+        <div>
+            <a href="#close" title="Закрыть" class="close">X</a>
+            <h4>Редактировать</h4>
+            <form action="{{ route('updateObjects') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    @csrf
+                    <input type="hidden" name="type" value="3">
+                    <input type="hidden" name="id" value=" {{ request()->post_id }}">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Название</label>
+                        <input type="text" name="name" class="form-control" value="{{ $find->name ?? '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Адрес</label>
+                        <input type="text" name="address" class="form-control" value="{{ $find->address ?? '' }}">
+                    </div>
+                    @if(request()->post_id)
+                    <div class="form-group">
+                        <label for="link">Город</label>
+                        @if($city->count() > 0)
+                            <select name="city_id">
+                                @foreach($city as $item)
+                                    <option value="{{ $item->id }}" @if($find->city_id == $item->id) selected @endif> {{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        @endif
+                    </div>
+                    @endif
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn btn-secondary" >Закрыть</a>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('css/modal.css?cahc='.time()) }}">
+
 @stop
 
 @section('js')

@@ -27,8 +27,8 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->region['name'] }}</td>
                 <td>
-                    <a href="{{ url('admin/map/edit/'.$item->id) }}"><i class="fas fa-edit"></i></a>
-                    <a href="{{ url('admin/map/remove/'.$item->id) }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
+                    <a href="{{ url('admin/map/cities/?post_id='.$item->id.'#editModal') }}"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('admin/map/remove/'.$item->id.'/1') }}"><i class="fas fa-trash-alt" style="color:Red;"></i></a>
                 </td>
             </tr>
         @endforeach
@@ -78,10 +78,48 @@
             </div>
         </div>
     </div>
+    <div id="editModal" class="modalDialog" >
+        <div>
+            <a href="#close" title="Закрыть" class="close">X</a>
+            <h4>Редактировать</h4>
+            <form action="{{ route('updateObjects') }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+
+                    @csrf
+                    <input type="hidden" name="id" value=" {{ request()->post_id }}">
+                    <input type="hidden" name="type" value="2">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Название</label>
+                        <input type="text" name="name" class="form-control" value="{{ $find->name ?? '' }}">
+                    </div>
+                    @if(request()->post_id)
+                    <div class="form-group">
+                        <label for="link">Регион</label>
+                        @if($region->count() > 0)
+                            <select name="region_id">
+                                @foreach($region as $item)
+                                    <option value="{{ $item->id }}" @if($find->region_id == $item->id) selected @endif> {{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        @endif
+                    </div>
+                    @endif
+
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#close" class="btn btn-secondary" >Закрыть</a>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('css/modal.css?cahc='.time()) }}">
+
 @stop
 
 @section('js')

@@ -17,18 +17,18 @@
 
         <div class="form-group">
             <label for="exampleInputEmail1">Текст</label>
-            <textarea name="text" id="" cols="30" rows="10"></textarea>
+            <textarea name="text" id="" cols="30" rows="10">{{ $find->first_data ?? '' }}</textarea>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Текст</label>
-            <textarea name="text2" id="" cols="30" rows="10"></textarea>
+            <textarea name="text2" id="" cols="30" rows="10">{{ $find->second_data ?? '' }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmail1">Выберите объекты</label>
             <select name="city_object" >
                 @foreach($objects as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    <option value="{{ $item->id }}" @if(request()->post_id == $item->id) selected @endif>{{ $item->name }}</option>
                 @endforeach
             </select>
         </div>

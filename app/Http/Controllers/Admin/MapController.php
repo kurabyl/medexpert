@@ -14,19 +14,21 @@ class MapController extends Controller
     public function regions()
     {
         $regions = Region::all();
-
+        $find = Region::find(\request()->post_id ?? 0);
         return view('admin.map.regions',[
-            'regions'=>$regions
+            'regions'=>$regions,
+            'find'=>$find
         ]);
     }
     public function cities()
     {
         $city = City::all();
         $regions = Region::all();
-
+        $find = City::find(\request()->post_id ?? 0);
         return view('admin.map.city',[
             'city'=>$city,
-            'region'=>$regions
+            'region'=>$regions,
+            'find'=>$find
         ]);
     }
 
@@ -34,9 +36,11 @@ class MapController extends Controller
     {
         $objects = CityObject::all();
         $city = City::all();
+        $find = CityObject::find(\request()->post_id ?? 0);
         return view('admin.map.cityobjects',[
             'objects'=>$objects,
-            'city'=>$city
+            'city'=>$city,
+            'find'=>$find
         ]);
     }
 
@@ -118,19 +122,52 @@ class MapController extends Controller
     public function addDetailsObjects()
     {
         $objects = CityObject::all();
+        $find = ObjectDetails::where('object_id',\request()->post_id ?? 0)->first();
+
         return view('admin.map.add-object_details',[
-            'objects'=>$objects
+            'objects'=>$objects,
+            'find'=>$find,
         ]);
     }
 
     public function postObjectDetails(Request $request)
     {
-        $add = new ObjectDetails();
-        $add->first_data = $request->text;
-        $add->second_data = $request->text2;
-        $add->city_id = $request->city_object;
-        if ($add->save()) {
-            return redirect()->back()->with('success','Успешно добавлено');
+        $find = ObjectDetails::where('object_id',$request->city_object);
+        if ($find->exists()) {
+            $add = $find->first();
+            $add->first_data = $request->text;
+            $add->second_data = $request->text2;
+            $add->object_id = $request->city_object;
+            if ($add->save()) {
+                return redirect()->back()->with('success','Успешно добавлено');
+            }
+        }else {
+            $add = new ObjectDetails();
+            $add->first_data = $request->text;
+            $add->second_data = $request->text2;
+            $add->object_id = $request->city_object;
+            if ($add->save()) {
+                return redirect()->back()->with('success','Успешно добавлено');
+            }
+        }
+
+    }
+
+    public function removeAll($id,$type)
+    {
+        switch ($type) {
+            case 1:
+                if (City::remove($id)) {
+                    return redirect()->back();
+                }
+            break;
+            case 2:
+                if (CityObject::remove($id)) {
+                    return redirect()->back();
+                }
+            break;
+            case 3:
+            break;
         }
     }
 

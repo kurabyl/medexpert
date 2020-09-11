@@ -75,10 +75,12 @@ Route::prefix('admin')->group(function () {
     Route::post('addRegion','Admin\MapController@addRegion')->name('addRegion');
     Route::post('addCity','Admin\MapController@addCity')->name('addCity');
     Route::post('addObjects','Admin\MapController@addObjects')->name('addObjects');
+    Route::post('updateObjects','Admin\MapController@updateObjects')->name('updateObjects');
 
     Route::get('map/regions','Admin\MapController@regions');
     Route::get('map/cities','Admin\MapController@cities');
     Route::get('map/objects','Admin\MapController@objects');
+    Route::get('map/remove/{id}/{type}','Admin\MapController@removeAll');
     Route::get('map/add_detailsobjects','Admin\MapController@addDetailsObjects');
     Route::post('map/postObjectDetails','Admin\MapController@postObjectDetails')->name('postObjectDetails');
     Route::get('gosservices/','Admin\ActivityController@gosServiceList');
