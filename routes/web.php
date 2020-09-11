@@ -79,7 +79,8 @@ Route::prefix('admin')->group(function () {
     Route::get('map/regions','Admin\MapController@regions');
     Route::get('map/cities','Admin\MapController@cities');
     Route::get('map/objects','Admin\MapController@objects');
-
+    Route::get('map/add_detailsobjects','Admin\MapController@addDetailsObjects');
+    Route::post('map/postObjectDetails','Admin\MapController@postObjectDetails')->name('postObjectDetails');
     Route::get('gosservices/','Admin\ActivityController@gosServiceList');
     Route::get('gosservices/{id}','Admin\ActivityController@viewList');
     Route::post('gosservices/add','Admin\ActivityController@addGosUslugi')->name('addGosUslugi');

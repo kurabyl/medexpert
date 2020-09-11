@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Map\City;
 use App\Map\CityObject;
+use App\Map\ObjectDetails;
 use App\Map\Region;
 use Illuminate\Http\Request;
 
@@ -112,6 +113,25 @@ class MapController extends Controller
             return redirect()->back()->with('success','Успешно добавлено');
         }
         return redirect()->back()->with('error','Повторите еще раз');
+    }
+
+    public function addDetailsObjects()
+    {
+        $objects = CityObject::all();
+        return view('admin.map.add-object_details',[
+            'objects'=>$objects
+        ]);
+    }
+
+    public function postObjectDetails(Request $request)
+    {
+        $add = new ObjectDetails();
+        $add->first_data = $request->text;
+        $add->second_data = $request->text2;
+        $add->city_id = $request->city_object;
+        if ($add->save()) {
+            return redirect()->back()->with('success','Успешно добавлено');
+        }
     }
 
 
