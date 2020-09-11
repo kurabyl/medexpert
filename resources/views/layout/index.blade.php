@@ -50,9 +50,9 @@
                             <div class="lang_block">
                                 <div class="lang_choice">ru</div>
                                 <div class="other_lang">
-                                    <a class="lang active" href="{{ url('lang/ru') }}">ru</a>
-                                    <a class="lang" href="{{ url('lang/kk') }}">kz</a>
-                                    <a class="lang" href="{{ url('lang/en') }}">en</a>
+                                    <a class="lang" href="/setlocale/kk">kz</a>
+                                    <a class="lang active" href="/setlocale/ru">ru</a>
+                                    <a class="lang" href="/setlocale/en">en</a>
                                 </div>
                             </div>
                             <div class="mob_menu">
